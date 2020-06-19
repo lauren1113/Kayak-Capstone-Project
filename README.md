@@ -1,7 +1,8 @@
 # Kayak Fanatic
 ## Savvy Coders Capstone Project 
 
-####Description: 
+Description: 
+
 Kayak Fanatic serves as an informational database with everything you need to know to have a successful and enjoyable kayak adventure. It includes a mile tracker to record your kayak trip, information about nearby lakes and rivers, a beginner’s guide to kayaking, and a quiz beginners can take to find the best kayaks to fit their adventure-style. 
 
 
