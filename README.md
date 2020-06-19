@@ -1,11 +1,8 @@
 # Kayak Fanatic
 ## Savvy Coders Capstone Project 
 
-This is my first coding project!  I am creating a Single Page Application, which will act as a Kayak Adventure Guide.
-
-Description: A description of your project follows. A good description is clear, short, and to the point. Describe the importance of your project, and what it does.
-
-Kayak Fanatic serves as an informational database with everything you need to know to have a successful and enjoyable kayaking adventure in Missouri. It includes a mile tracker to record your kayak trip, information about nearby lakes and rivers, a beginner’s guide to kayaking, and a quiz beginners can take to find the best kayaks to fit their adventure-style. 
+####Description: 
+Kayak Fanatic serves as an informational database with everything you need to know to have a successful and enjoyable kayak adventure. It includes a mile tracker to record your kayak trip, information about nearby lakes and rivers, a beginner’s guide to kayaking, and a quiz beginners can take to find the best kayaks to fit their adventure-style. 
 
 
 Table of Contents: Optionally, include a table of contents in order to allow other people to quickly navigate especially long or detailed READMEs.
