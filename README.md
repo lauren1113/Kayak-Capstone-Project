@@ -1,30 +1,35 @@
 # Kayak Fanatic
 ## Savvy Coders Capstone Project 
 
-Description: 
+**Description:**
 
 Kayak Fanatic serves as an informational database with everything you need to know to have a successful and enjoyable kayak adventure. It includes a mile tracker to record your kayak trip, information about nearby lakes and rivers, a beginner’s guide to kayaking, and a quiz beginners can take to find the best kayaks to fit their adventure-style. 
 
 
-Table of Contents: Optionally, include a table of contents in order to allow other people to quickly navigate especially long or detailed READMEs.
+**Table of Contents:** 
+_Optionally, include a table of contents in order to allow other people to quickly navigate especially long or detailed READMEs._
 1. Elevator Speech
 2. Wireframes
 3. ...
 
 
-Installation: Installation is the next section in an effective README. Tell other users how to install your project locally. Optionally, include a gif to make the process even more clear for other people.
+**Installation:**
+_Installation is the next section in an effective README. Tell other users how to install your project locally. Optionally, include a gif to make the process even more clear for other people._
 
 
-Usage: The next section is usage, in which you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action.
+**Usage:** 
+_The next section is usage, in which you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action._
 
 
-Contributing: Larger projects often have sections on contributing to their project, in which contribution instructions are outlined. Sometimes, this is a separate file. If you have specific contribution preferences, explain them so that other developers know how to best contribute to your work. To learn more about how to help others contribute, check out the guide for setting guidelines for repository contributors.
+**Contributing:**
+_Larger projects often have sections on contributing to their project, in which contribution instructions are outlined. Sometimes, this is a separate file. If you have specific contribution preferences, explain them so that other developers know how to best contribute to your work. To learn more about how to help others contribute, check out the guide for setting guidelines for repository contributors._
 
 
-Credits: Include a section for credits in order to highlight and link to the authors of your project.
+**Credits:**
+_Include a section for credits in order to highlight and link to the authors of your project._
 
 
-License: 
+**License:** 
                     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
