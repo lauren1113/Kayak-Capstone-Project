@@ -7,7 +7,6 @@ Kayak Fanatic is an informational database with everything you need to know to h
 
 
 **Table of Contents:** 
-_Optionally, include a table of contents in order to allow other people to quickly navigate especially long or detailed READMEs._
 1. Documents Folder: 
     * Elevator Speech
     * Project Timeline 
