@@ -3,14 +3,19 @@
 
 **Description:**
 
-Kayak Fanatic serves as an informational database with everything you need to know to have a successful and enjoyable kayak adventure. It includes a mile tracker to record your kayak trip, information about nearby lakes and rivers, a beginner’s guide to kayaking, and a quiz beginners can take to find the best kayaks to fit their adventure-style. 
+Kayak Fanatic is an informational database with everything you need to know to have a successful and enjoyable kayak adventure. It includes a mile tracker to record your kayak trip, information about nearby lakes and rivers, a beginner’s guide to kayaking, and a quiz beginners can take to find the best kayaks to fit their adventure-style. 
 
 
 **Table of Contents:** 
 _Optionally, include a table of contents in order to allow other people to quickly navigate especially long or detailed READMEs._
-1. Elevator Speech
-2. Wireframes
-3. ...
+1. Documents Folder: 
+    a) Elevator Speech
+    b) Project Timeline 
+    c) Wireframes
+    d) Design Planning notes
+2. HTML Code
+3. CSS Code
+4. JavaScript Code
 
 
 **Installation:**
@@ -21,12 +26,10 @@ _Installation is the next section in an effective README. Tell other users how t
 _The next section is usage, in which you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action._
 
 
-**Contributing:**
-_Larger projects often have sections on contributing to their project, in which contribution instructions are outlined. Sometimes, this is a separate file. If you have specific contribution preferences, explain them so that other developers know how to best contribute to your work. To learn more about how to help others contribute, check out the guide for setting guidelines for repository contributors._
+**My Kanban Board:**
+To see my current workings and items I plan to add to my application, visit my Trello Kanban Board [here](https://trello.com/b/VQj9bm50/kayak-capstone-project)! 
+https://trello.com/b/VQj9bm50/kayak-capstone-project
 
-
-**Credits:**
-_Include a section for credits in order to highlight and link to the authors of your project._
 
 
 **License:** 
