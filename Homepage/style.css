@@ -1,0 +1,76 @@
+* {
+  background-color: #191970;
+  color: #E6E6FA;
+}
+
+#logo {
+  font-family: "Segoe Script";
+  text-align: center;
+  font-size: 100px;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  padding: 100px 30px;
+  margin: auto;
+  background-image: url("https://github.com/lauren1113/Kayak-Capstone-Project/blob/master/Documents/Design/Kayak%20Photos/logo-photo.jpg?raw=true");
+  background-position: bottom 25%;
+}
+
+#logoButtonsBox {
+  text-align: center;
+  margin: 0px, 0px, 20px, 5px;
+  font-family: "Segoe Print"
+}
+
+.welcomeMessage {
+  text-align: center;
+  margin: 10px 5px 5px 5px;
+}
+
+#welcomeLine1 {
+  font-family: "Ink Free";
+  font-size: 70px;
+  padding: 0px;
+  border: 0px;
+  margin: 5px;
+}
+
+#welcomeLine2 {
+  font-family: "Ink Free";
+  font-size: 50px;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+}
+
+#homeSummary {
+  font-family: "Ink Free";
+  font-size: 28px;
+}
+
+.home-image-column {
+  float: left;
+  width: 33.33%;
+  align-items: center;
+}
+
+.home-image-row {
+  content: "";
+  clear: both;
+  display: flex;
+}
+
+#homeImg1 {
+  max-width: 350px;
+  max-height: 350px;
+}
+
+#homeImg2 {
+  max-width: 380px;
+  max-height: 350px;
+}
+
+#homeImg3 {
+  max-width: 350px;
+  max-height: 350px;
+}
+
+
