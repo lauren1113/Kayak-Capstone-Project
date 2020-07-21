@@ -1,0 +1,23 @@
+* {
+  background-color: #191970;
+  color: #E6E6FA;
+}
+
+#logo {
+  font-family: "Segoe Script";
+  text-align: center;
+  font-size: 100px;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  padding: 100px 30px;
+  margin: auto;
+  background-image: url("https://github.com/lauren1113/Kayak-Capstone-Project/blob/master/Documents/Design/Kayak%20Photos/logo-photo.jpg?raw=true");
+  background-position: bottom 25%;
+}
+
+#logoButtonsBox {
+  text-align: center;
+  margin: 0px, 0px, 20px, 5px;
+  font-family: "Segoe Print"
+}
+
