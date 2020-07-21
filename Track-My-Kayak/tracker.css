@@ -21,3 +21,22 @@
   font-family: "Segoe Print"
 }
 
+#trackerHeading {
+  font-family: "Ink Free";
+  text-align: center;
+  font-size: 95px;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  padding: 5px;
+  margin: 25px;
+}
+
+#startTracking {
+  font-size:50px;
+  font-family: "Ink Free";
+}
+
+.tracking {
+  font-family: "Ink Free";
+  font-size: 30px;
+}
