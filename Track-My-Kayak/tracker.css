@@ -17,7 +17,7 @@
 
 #logoButtonsBox {
   text-align: center;
-  margin: 0px, 0px, 20px, 5px;
+  margin: 0px 0px 20px 5px;
   font-family: "Segoe Print"
 }
 
@@ -31,12 +31,46 @@
   margin: 25px;
 }
 
-#startTracking {
-  font-size:50px;
-  font-family: "Ink Free";
+#kayakTracker {
+  border: 1px solid #E6E6FA;
+  padding: 10px;
+  border-radius: 7px;
+  max-width: 40%;
+  max-height: auto;
 }
 
 .tracking {
   font-family: "Ink Free";
-  font-size: 30px;
+  font-size: 35px;
+  text-align: center;
+  padding: 1px 5px;
+  border-radius: 2px;
+  max-height: 5%;
+}
+
+#sw-time, #sw-distance, #sw-pace {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#sw-resetButton, #sw-startButton {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  display: inline-block;
+  border: 5px solid #E6E6FA;
+  border-radius: 2px;
+  font-size: 50px;
+  text-align: center;
+}
+
+.trackerTopic {
+  box-sizing: border-box;
+  border: 1px dashed #E6E6FA;
+  border-radius: 1px;
+  margin: 5px;
+  height: fit-content;
+  padding: 1px;
+  text-align: center;
 }
