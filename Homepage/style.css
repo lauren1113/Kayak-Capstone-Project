@@ -3,22 +3,32 @@
   color: #E6E6FA;
 }
 
-#logo {
-  font-family: "Segoe Script";
+#logo{
   text-align: center;
-  font-size: 100px;
+  position: relative;
+  margin: 10px;
+}
+
+#logoText {
+  font-family: "Segoe Script";
+  font-size: 60px;
   text-decoration-line: underline;
   text-decoration-style: wavy;
-  padding: 100px 30px;
-  margin: auto;
-  background-image: url("https://github.com/lauren1113/Kayak-Capstone-Project/blob/master/Documents/Design/Kayak%20Photos/logo-photo.jpg?raw=true");
-  background-position: bottom 25%;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
 }
 
 #logoButtonsBox {
   text-align: center;
   margin: 0px, 0px, 20px, 5px;
-  font-family: "Segoe Print"
+  font-family: "Segoe Print";
+}
+
+button {
+  border-radius: 4px;
 }
 
 .welcomeMessage {
