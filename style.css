@@ -23,11 +23,11 @@
 
 #navButtons {
   text-align: center;
-  margin: 0px, 0px, 20px, 5px;
+  margin: 5px;
+  padding: 5px;
   font-family: "Segoe Print";
   border-radius: 4px;
 }
-
 
 .welcomeMessage {
   text-align: center;
