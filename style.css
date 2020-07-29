@@ -1,16 +1,139 @@
 * {
-  background-color: #ADD8E6;
-  color: #000000
+  background-color: #191970;
+  color: #E6E6FA;
 }
 
-h1 {
-  font-family: Jokerman, Calibri, sans serif;
+#logo{
+  text-align: center;
+  position: relative;
+  margin: 10px;
 }
 
-h3 {
-  font-family: Harrington, Calibri, sans serif;
+#logoText {
+  font-family: "Segoe Script";
+  font-size: 60px;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
 }
 
-p {
-  font-family: Century-Gothic, Calibri, sans serif;
+#logoButtonsBox {
+  text-align: center;
+  margin: 0px, 0px, 20px, 5px;
+  font-family: "Segoe Print";
+}
+
+button {
+  border-radius: 4px;
+}
+
+.welcomeMessage {
+  text-align: center;
+  margin: 10px 5px 5px 5px;
+}
+
+#welcomeLine1 {
+  font-family: "Ink Free";
+  font-size: 70px;
+  padding: 0px;
+  border: 0px;
+  margin: 5px;
+}
+
+#welcomeLine2 {
+  font-family: "Ink Free";
+  font-size: 50px;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+}
+
+#homeSummary {
+  font-family: "Ink Free";
+  font-size: 28px;
+}
+
+.home-image-column {
+  float: left;
+  width: 33.33%;
+  align-items: center;
+}
+
+.home-image-row {
+  content: "";
+  clear: both;
+  display: flex;
+}
+
+#homeImg1 {
+  max-width: 350px;
+  max-height: 350px;
+}
+
+#homeImg2 {
+  max-width: 380px;
+  max-height: 350px;
+}
+
+#homeImg3 {
+  max-width: 350px;
+  max-height: 350px;
+}
+
+
+#trackerHeading {
+  font-family: "Ink Free";
+  text-align: center;
+  font-size: 95px;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  padding: 5px;
+  margin: 25px;
+}
+
+#kayakTracker {
+  border: 1px solid #E6E6FA;
+  padding: 10px;
+  border-radius: 7px;
+  max-width: 40%;
+  max-height: auto;
+}
+
+.tracking {
+  font-family: "Ink Free";
+  font-size: 35px;
+  text-align: center;
+  padding: 1px 5px;
+  border-radius: 2px;
+  max-height: 5%;
+}
+
+#sw-time, #sw-distance, #sw-pace {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#sw-resetButton, #sw-startButton {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  display: inline-block;
+  border: 5px solid #E6E6FA;
+  border-radius: 2px;
+  font-size: 50px;
+  text-align: center;
+}
+
+.trackerTopic {
+  box-sizing: border-box;
+  border: 1px dashed #E6E6FA;
+  border-radius: 1px;
+  margin: 5px;
+  height: fit-content;
+  padding: 1px;
+  text-align: center;
 }
