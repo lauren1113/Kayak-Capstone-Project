@@ -21,15 +21,13 @@
   background-color: transparent;
 }
 
-#logoButtonsBox {
+#navButtons {
   text-align: center;
   margin: 0px, 0px, 20px, 5px;
   font-family: "Segoe Print";
-}
-
-button {
   border-radius: 4px;
 }
+
 
 .welcomeMessage {
   text-align: center;
