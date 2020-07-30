@@ -7,7 +7,6 @@
   <title>Track My Kayak</title>
 </head>
 <body>
-  <script src="tracker.js"></script>
   <div id="logo">
     <img id="logoPhoto" src="https://github.com/lauren1113/Kayak-Capstone-Project/blob/master/Documents/Design/Kayak%20Photos/logo-test.jpg?raw=true"/>
     <h1 id="logoText">Kayak Fanatic</h1>
@@ -23,7 +22,6 @@
       <button><a href="/safety.html">Safety Tips</a></button>
   </nav>
   <h2 id="trackerHeading">Track My Kayak</h2>
-
   <div id="kayakTracker">
     <!-- [START/STOP BUTTON] -->
       <input type="button" value="Start Tracking" class="tracking" id="sw-startButton" disabled/>
@@ -45,7 +43,11 @@
     <!-- [RESET BUTTON] -->
       <input type="button" value="Reset" class="tracking" id="sw-resetButton" disabled/>
     </div>
-
-
+    <section id="mapOfCurrentLoc"><a href=https://maps.googleapis.com/maps/api/staticmap?center=" +
+      latlongvalue + "&amp;zoom=14&amp;size=400x300&amp;key=AIzaSyAa8HeLH2lQMbPeOiMlM9D1VxZ7pbGQq8o" display></a></section>
+  <script src="tracker.js"></script>
+  <script src="show-location.js"></script>
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb1xprYSpXd0q_yDsJ1W2UGhfl9_YGKU0&callback=initMap&libraries=&v=weekly"></script>
 </body>
 </html>
