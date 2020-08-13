@@ -2,6 +2,7 @@
   background-color: #191970;
   color: #E6E6FA;
   padding: 5px 30px;
+  font-family: "Ink Free";
 }
 
 #logo {
@@ -74,9 +75,22 @@ p {
 }
 
 .bg-p {
-  font-size: 23px;
+  font-size: 20px;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+#bgNote {
+  font-size: 18px;
+  text-align: center;
+}
+
+h6 {
+  font-size: 35px;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  font-style: bold;
+  padding: 0px;
 }
 
 .home-image-column {
@@ -107,15 +121,24 @@ p {
   max-height: 350px;
 }
 
-
-#paddleImg {
-  max-width: 450px;
+#holdPadImg {
+  max-width: 550px;
   height: auto;
 }
 
-#strokeImg {
-  max-width: 500px;
+#fwdStrokeImg {
+  max-width: 400px;
   height: auto;
+}
+
+#backStrokeImg {
+  max-width: 400px;
+  height: auto;
+}
+
+#sweepStkImg {
+  max-width: 500px;
+  height:auto;
 }
 
 #trackerHeading {
