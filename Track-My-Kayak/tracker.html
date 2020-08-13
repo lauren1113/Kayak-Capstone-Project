@@ -43,11 +43,7 @@
     <!-- [RESET BUTTON] -->
       <input type="button" value="Reset" class="tracking" id="sw-resetButton" disabled/>
     </div>
-    <section id="mapOfCurrentLoc"><a href=https://maps.googleapis.com/maps/api/staticmap?center=" +
-      latlongvalue + "&amp;zoom=14&amp;size=400x300&amp;key=AIzaSyAa8HeLH2lQMbPeOiMlM9D1VxZ7pbGQq8o" display></a></section>
-  <script src="tracker.js"></script>
-  <script src="show-location.js"></script>
-  <script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb1xprYSpXd0q_yDsJ1W2UGhfl9_YGKU0&callback=initMap&libraries=&v=weekly"></script>
+  <script src="stopwatch.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=${GM_API_KEY}&callback=initialize"></script>
 </body>
 </html>

@@ -1,9 +1,10 @@
 * {
   background-color: #191970;
   color: #E6E6FA;
+  padding: 5px 30px;
 }
 
-#logo{
+#logo {
   text-align: center;
   position: relative;
   margin: 10px;
@@ -23,8 +24,8 @@
 
 #navButtons {
   text-align: center;
-  margin: 5px;
-  padding: 5px;
+  margin: 0px;
+  padding: 0px;
   font-family: "Segoe Print";
   border-radius: 4px;
 }
@@ -37,7 +38,7 @@
 #welcomeLine1 {
   font-family: "Ink Free";
   font-size: 70px;
-  padding: 0px;
+  padding: 0px 20px;
   border: 0px;
   margin: 5px;
 }
@@ -47,11 +48,35 @@
   font-size: 50px;
   text-decoration-line: underline;
   text-decoration-style: wavy;
+  padding: 0px 20px;
 }
 
-#homeSummary {
+.sectionTitle {
+  font-family: "Ink Free";
+  font-size: 45px;
+  text-align: center;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  padding: 0px;
+}
+
+p {
   font-family: "Ink Free";
   font-size: 28px;
+}
+
+.bgBox {
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+  margin: 0px;
+  justify-content: space-around;
+}
+
+.bg-p {
+  font-size: 23px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .home-image-column {
@@ -65,6 +90,7 @@
   clear: both;
   display: flex;
 }
+
 
 #homeImg1 {
   max-width: 350px;
@@ -81,6 +107,16 @@
   max-height: 350px;
 }
 
+
+#paddleImg {
+  max-width: 450px;
+  height: auto;
+}
+
+#strokeImg {
+  max-width: 500px;
+  height: auto;
+}
 
 #trackerHeading {
   font-family: "Ink Free";
