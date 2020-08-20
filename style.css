@@ -98,7 +98,10 @@ h6 {
   text-decoration-style: wavy;
   font-style: bold;
   padding: 0px;
+  margin-bottom: 0px;
 }
+
+/* BEGIN IMAGE EDITS */
 
 .home-image-column {
   float: left;
@@ -159,8 +162,33 @@ h6 {
 
 #sweepStkImg {
   max-width: 450px;
-  height:auto;
+  height: auto;
+  margin-top: 7px;
 }
+
+#beachLaunch {
+  max-width: 500px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+#crlyhrgrl {
+  max-height: 300px;
+  width: auto;
+  margin-top: 50px;
+  margin-left: 0px;
+  padding-left: 2px;
+}
+
+#tndm-BnM, #tndm-MnA {
+  max-width: 500px;
+  height: auto;
+}
+
+/* END IMAGE EDITS */
 
 #trackerHeading {
   font-family: "Ink Free";
