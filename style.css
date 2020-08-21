@@ -5,15 +5,46 @@
   font-family: "Ink Free";
 }
 
+#header {
+  text-align: center;
+  position: sticky;
+  margin: 10px 10px 5px 10px;
+  color: rgb(2, 2, 54);
+}
+
+#navButtons {
+  position: relative;
+  transform: translate(2.5%, -155%);
+  color: rgb(2, 2, 54);
+  background-color: transparent;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+  font-family: "Segoe Print";
+  border-radius: 6px;
+}
+
+.navBtn {
+  color: rgb(2, 2, 54);
+  background-color: transparent;
+  text-align: center;
+  padding: 0px;
+}
+
+.navBtn:hover {
+  background-color: #191970;
+  color: #E6E6FA;
+}
+
 #logo {
   text-align: center;
   position: relative;
-  margin: 10px;
+  margin: 0px;
 }
 
 #logoText {
   font-family: "Segoe Script";
-  font-size: 60px;
+  font-size: 79px;
   text-decoration-line: underline;
   text-decoration-style: wavy;
   position: absolute;
@@ -23,14 +54,6 @@
   background-color: transparent;
 }
 
-#navButtons {
-  text-align: center;
-  margin: 0px;
-  padding: 0px;
-  font-family: "Segoe Print";
-  border-radius: 4px;
-}
-
 .welcomeMessage {
   text-align: center;
   margin: 10px 5px 5px 5px;
@@ -38,7 +61,7 @@
 
 #welcomeLine1 {
   font-family: "Ink Free";
-  font-size: 70px;
+  font-size: 65px;
   padding: 0px 20px;
   border: 0px;
   margin: 5px;
@@ -113,8 +136,14 @@ h6 {
 
 /* BEGIN IMAGE EDITS */
 
+#headImg {
+  width: 100%;
+}
 
-
+#logoPhoto {
+  max-height: 400px;
+  width: auto;
+}
 .home-image-column {
   float: left;
   width: 33.33%;
