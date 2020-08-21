@@ -66,6 +66,12 @@ p {
   font-size: 28px;
 }
 
+.anchorButtons {
+  text-align: center;
+  margin: 5px;
+  padding: 0px;
+}
+
 .bgBox {
   display: flex;
   flex-direction: row;
@@ -101,7 +107,13 @@ h6 {
   margin-bottom: 0px;
 }
 
+#tandems {
+  margin-top: 2px;
+}
+
 /* BEGIN IMAGE EDITS */
+
+
 
 .home-image-column {
   float: left;
@@ -183,9 +195,82 @@ h6 {
   padding-left: 2px;
 }
 
-#tndm-BnM, #tndm-MnA {
+#tndm-MnA {
   max-width: 500px;
   height: auto;
+}
+
+#dockLaunch {
+  max-height: 310px;
+  width: auto;
+  margin-top: 10px;
+  margin-left: 2px;
+}
+
+#floatLaunch {
+  max-height: 250px;
+  width: auto;
+}
+
+#rockyLaunch {
+  max-height: 250px;
+  width: auto;
+  margin-top: 10px;
+}
+
+#inWater {
+  max-width: 430px;
+  height: auto;
+  margin-top: 30px;
+  margin-left: 25px;
+}
+
+#landImg {
+  max-width: 550px;
+  height: auto;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+#beachLand {
+  max-width: 450px;
+  height: auto;
+  margin-bottom: 5px;
+  margin-top: 0px;
+}
+
+#dockLand {
+  max-height: 250px;
+  width: auto;
+  margin-top: 10px;
+}
+
+#rockyLand {
+  max-height: 300px;
+  width: auto;
+}
+
+#hangKayaks {
+  max-height: 350px;
+  width: auto;
+  margin-top: 20px;
+}
+
+#lifevests {
+  max-height: 255px;
+  width: auto;
+  margin-top: 20px;
+}
+
+#landscapeFooter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 /* END IMAGE EDITS */
