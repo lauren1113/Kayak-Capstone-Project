@@ -14,17 +14,17 @@
 #navButtons {
   position: relative;
   transform: translate(2.5%, -155%);
-  color: rgb(2, 2, 54);
   background-color: transparent;
   text-align: center;
   margin: 0px;
   padding: 0px;
   font-family: "Segoe Print";
+  color: #252252;
   border-radius: 6px;
 }
 
 .navBtn {
-  color: rgb(2, 2, 54);
+  color: #252252;
   background-color: transparent;
   text-align: center;
   padding: 0px;
@@ -306,7 +306,7 @@ h6 {
 #trackerHeading {
   font-family: "Ink Free";
   text-align: center;
-  font-size: 95px;
+  font-size: 65px;
   text-decoration-line: underline;
   text-decoration-style: wavy;
   padding: 5px;
