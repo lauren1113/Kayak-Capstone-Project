@@ -1,8 +1,5 @@
 export default () => `
   <a id="#topOfBG"></a>
-  <h3 class="welcomeMessage" id="welcomeLine1">Beginner's Guide to Kayaking</h3>
-  <h3 class="welcomeMessage" id="welcomeLine2">Tips and Tricks for Successful Kayak Trips!</h3>
-  <br>
 
   <nav class="anchorButtons">
     <button><a href="#holdPaddle">Holding the Paddle</a></button>
