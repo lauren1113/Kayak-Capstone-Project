@@ -1,5 +1,5 @@
 export default () => `
-  <h2 id="trackerHeading">Track My Kayak</h2>
+
   <div id="trackNmap">
     <div id="kayakTracker">
       <!-- [START/STOP BUTTON] -->

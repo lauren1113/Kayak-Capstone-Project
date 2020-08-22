@@ -7,6 +7,7 @@ export default () => `
       <form id="contactForm" action="https://formspree.io/xyynanol" method="POST">
         <label>Your email:<input type="text" name="_replyto"></label>
         <label>Your message:<textarea name="message"></textarea></label>
+        <label>Submit a photo via URL:<input type="URL" name="photoURL"></label>
         <button type="submit">Send</button>
       </form>
     </div>
