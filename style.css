@@ -313,6 +313,17 @@ h6 {
   margin: 25px;
 }
 
+#trackNmap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#map {
+  width: 600px;
+  height: 1000px;
+}
+
 #kayakTracker {
   border: 1px solid #E6E6FA;
   padding: 10px;
@@ -339,12 +350,13 @@ h6 {
 #sw-resetButton, #sw-startButton {
   width: 100%;
   box-sizing: border-box;
-  padding: 20px;
+  padding: 55px 20px;
   display: inline-block;
   border: 5px solid #E6E6FA;
   border-radius: 2px;
   font-size: 50px;
   text-align: center;
+  justify-content: center;
 }
 
 .trackerTopic {

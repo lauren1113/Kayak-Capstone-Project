@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/style.css" rel="stylesheet">
+  <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.19.0.min.js"></script>
   <title>Track My Kayak</title>
 </head>
 <body>
@@ -27,6 +28,7 @@
   </div>
 </header>
   <h2 id="trackerHeading">Track My Kayak</h2>
+  <div id="trackNmap">
   <div id="kayakTracker">
     <!-- [START/STOP BUTTON] -->
       <input type="button" value="Start Tracking" class="tracking" id="sw-startButton" disabled/>
@@ -49,11 +51,12 @@
       <input type="button" value="Reset" class="tracking" id="sw-resetButton" disabled/>
     </div>
     <div class="container">
-      <div id="map-canvas" style="width:600px;height:400px"></div>
+      <div id="map-canvas" style="width:600px;height:400px">></div>
     </div>
+  </div>
   <script src="stopwatch.js"></script>
+  <script src="tracker.js"></script>
   <script src="kayakTracker.js"></script>
-  <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.19.0.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=${process.env.GM_API_KEY}&callback=initialize"></script>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=${process.env.GM_API_KEY}"></script>
 </body>

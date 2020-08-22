@@ -35,7 +35,7 @@ function positionError(error) {
 }
 
 // Tracking Position Changes
-const geoWatch
+let geoWatch;
 
 function startWatch() {
   if (!geoWatch) {
@@ -57,4 +57,3 @@ function stopWatch() {
   navigator.geolocation.clearWatch(geoWatch);
   geoWatch = undefined;
 }
-
