@@ -53,6 +53,38 @@
   background-color: transparent;
 }
 
+#footerForm {
+  font-size: 18px;
+  color: #252252;
+  position: relative;
+  transform: translate(2.5%, -130%);
+  background-color: transparent;
+  text-align: left;
+  margin: 0px;
+  padding: 0px;
+  padding-right: 350px;
+}
+
+#contactForm {
+  font-size: 18px;
+  position: relative;
+  transform: translate(0%, -67%);
+  background-color: transparent;
+}
+
+p {
+  font-family: "Ink Free";
+  font-size: 28px;
+}
+
+.sectionTitle {
+  font-family: "Ink Free";
+  font-size: 45px;
+  text-align: center;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  padding: 0px;
+}
 .welcomeMessage {
   text-align: center;
   margin: 10px 5px 5px 5px;
@@ -72,20 +104,6 @@
   text-decoration-line: underline;
   text-decoration-style: wavy;
   padding: 0px 20px;
-}
-
-.sectionTitle {
-  font-family: "Ink Free";
-  font-size: 45px;
-  text-align: center;
-  text-decoration-line: underline;
-  text-decoration-style: wavy;
-  padding: 0px;
-}
-
-p {
-  font-family: "Ink Free";
-  font-size: 28px;
 }
 
 #homeBox {
@@ -141,6 +159,7 @@ h6 {
 
 /* BEGIN IMAGE EDITS */
 
+/* IMAGES ON ALL PAGES */
 #headImg {
   width: 100%;
 }
@@ -150,6 +169,14 @@ h6 {
   width: auto;
 }
 
+#landscapeFooter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* HOME PAGE IMAGES */
 #mntnsGirl, #kayakDogs {
   max-height: 330px;
   width: auto;
@@ -165,6 +192,7 @@ h6 {
   width: 50%;
 }
 
+/* BEGINNER'S GUIDE IMAGES */
 #pdlOvrHd {
   max-height: 350px;
   width: auto;
@@ -278,16 +306,9 @@ h6 {
   width: auto;
   margin-top: 20px;
 }
-
-#landscapeFooter {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
-
 /* END IMAGE EDITS */
 
+/* TRACKER TEXT */
 #trackerHeading {
   font-family: "Ink Free";
   text-align: center;
