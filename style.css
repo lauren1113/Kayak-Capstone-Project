@@ -95,14 +95,15 @@ p {
   text-decoration-style: wavy;
   padding: 0px;
 }
+
 .welcomeMessage {
   text-align: center;
-  margin: 10px 5px 5px 5px;
+  margin: 15px 5px 5px 5px;
 }
 
 #welcomeLine1 {
   font-family: "Ink Free";
-  font-size: 65px;
+  font-size: 55px;
   padding: 0px 20px;
   border: 0px;
   margin: 5px;
@@ -110,7 +111,7 @@ p {
 
 #welcomeLine2 {
   font-family: "Ink Free";
-  font-size: 50px;
+  font-size: 40px;
   text-decoration-line: underline;
   text-decoration-style: wavy;
   padding: 0px 20px;
@@ -128,6 +129,7 @@ p {
   padding: 0px;
 }
 
+/* BEGINNER'S GUIDE TEXT EDITS */
 .bgBox {
   display: flex;
   flex-direction: row;
@@ -191,6 +193,7 @@ h6 {
   max-height: 330px;
   width: auto;
   padding-top: 7%;
+  justify-content: center;
 }
 
 #holdPadImg {
