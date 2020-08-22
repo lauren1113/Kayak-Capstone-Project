@@ -43,7 +43,7 @@
 
 #logoText {
   font-family: "Segoe Script";
-  font-size: 78px;
+  font-size: 75px;
   text-decoration-line: underline;
   text-decoration-style: wavy;
   position: absolute;
@@ -390,4 +390,9 @@ h6 {
 
 #map {
   height: 100%;
+}
+
+.CmgSoon {
+  text-align: center;
+  font-size: 30px;
 }

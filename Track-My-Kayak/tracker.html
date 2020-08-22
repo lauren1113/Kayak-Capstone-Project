@@ -3,57 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track My Kayak</title>
   <link href="/style.css" rel="stylesheet">
   <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.19.0.min.js"></script>
-  <title>Track My Kayak</title>
 </head>
 <body>
-  <header>
-    <div class="header">
-      <img id="headImg" src="https://github.com/lauren1113/Kayak-Capstone-Project/blob/master/Documents/Design/Kayak%20Photos/header-damir-spanic-1QL8fLEpxaE-unsplash.jpg?raw=true"/>
-      <nav id="navButtons">
-          <button class="navBtn"><a href="/index.html">Home</a></button>
-          <button class="navBtn"><a href="/Track-My-Kayak/tracker.html">Track My Kayak</a></button>
-          <button class="navBtn"><a href="/lakefinder.html">Find A Lake</a></button>
-          <button class="navBtn"><a href="/riverfinder.html">Find a River</a></button>
-          <button class="navBtn"><a href="/quiz.html">Kayak Quiz</a></button>
-          <button class="navBtn"><a href="/begguide.html">Beginner's Guide</a></button>
-          <button class="navBtn"><a href="/packlist.html">Packing List</a></button>
-          <button class="navBtn"><a href="/safety.html">Safety Tips</a></button>
-      </nav>
-    </div>
-  <div id="logo">
-    <img id="logoPhoto" src="https://github.com/lauren1113/Kayak-Capstone-Project/blob/master/Documents/Design/Kayak%20Photos/IMG_3107-landscape2.jpg?raw=true"/>
-    <h1 id="logoText">Kayak Fanatic</h1>
-  </div>
-</header>
-  <h2 id="trackerHeading">Track My Kayak</h2>
-  <div id="trackNmap">
-  <div id="kayakTracker">
-    <!-- [START/STOP BUTTON] -->
-      <input type="button" value="Start Tracking" class="tracking" id="sw-startButton" disabled/>
-    <!-- [DISPLAY DISTANCE] -->
-      <div class="trackerTopic">
-        <h5 class="tracking">Distance Traveled</h5>
-        <div id="sw-distance">00.00</div>
-      </div>
-    <!-- [DISPLAY TIMER] -->
-      <div class="trackerTopic">
-        <h5 class="tracking">Total Time</h5>
-        <div id="sw-time">00:00:00</div>
-      </div>
-    <!-- [DISPLAY PACE] -->
-    <div class="trackerTopic">
-        <h5 class="tracking">Average Pace Per Mile</h5>
-        <div id="sw-pace">00.00</div>
-      </div>
-    <!-- [RESET BUTTON] -->
-      <input type="button" value="Reset" class="tracking" id="sw-resetButton" disabled/>
-    </div>
-    <div class="container">
-      <div id="map-canvas" style="width:600px;height:400px">></div>
-    </div>
-  </div>
   <script src="stopwatch.js"></script>
   <script src="tracker.js"></script>
   <script src="kayakTracker.js"></script>
