@@ -28,7 +28,7 @@ function currentLocation() {
   return { lat: window.lat, lng: window.lng };
 }
 
-// determine distance traveled
+// determine distance traveled -- add event listener when stopwatch clicked
 function distanceTraveled() {
   return currentLocation - getLocation;
 }

@@ -1,5 +1,4 @@
 export default () => `
-
   <div id="trackNmap">
     <div id="kayakTracker">
       <!-- [START/STOP BUTTON] -->

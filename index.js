@@ -1,10 +1,11 @@
-import { Header, Main, Footer } from "./components";
+import { Header, Nav, Logo, Main, Footer } from "./components";
 import * as state from "./store";
 
 function render(st) {
   document.querySelector("#root").innerHTML = `
   ${Header(st)}
   ${Nav(state.Links)}
+  ${Logo()}
   ${Main(st)}
   ${Footer()}
 `;
