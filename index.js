@@ -8,6 +8,18 @@ function render(st) {
   ${Main(st)}
   ${Footer()}
 `;
+  addNavEventListeners();
 }
 
 render(state.Home);
+
+function addNavEventListeners() {
+  document.querySelectorAll("nav a").forEach(link =>
+    link.addEventListener("click", event => {
+      event.preventDefault();
+      let linkText = event.target.textContent;
+      let pieceOfState = state[linkText];
+      render(pieceOfState);
+    })
+  );
+}
