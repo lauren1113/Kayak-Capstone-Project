@@ -21,8 +21,11 @@ export default () => `
       <!-- [RESET BUTTON] -->
         <input type="button" value="Reset" class="tracking" id="sw-resetButton" disabled/>
       </div>
-      <div class="container">
-        <div id="map-canvas" style="width:600px;height:400px">></div>
+      <div id="locationDetails">
+      <div class="mapContainer">
+        <div id="trackerMap" style="height:400px;width:auto">></div>
+        <p class="latlong">latitude: <span id="lat"></span>° <br>
+        <p class="latlong">longitude: <span id="lon"></span>°
       </div>
   </div>
 `;
