@@ -21,6 +21,10 @@
   font-family: "Segoe Print";
   color: #252252;
   border-radius: 6px;
+  display: flex;
+  flex-flow: row nowrap;
+  white-space: nowrap;
+  justify-content: center;
 }
 
 .navBtn {
