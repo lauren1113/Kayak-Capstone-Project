@@ -1,5 +1,5 @@
 export default {
-  header: "Packing List",
+  title: "Packing List",
   Welcome: "Prepare for Your Next Adventure",
   page: "PackingList"
 };

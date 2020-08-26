@@ -1,4 +1,4 @@
-import { Header, Logo, Main, Footer } from "./components";
+import { Header, Logo, pageTitle, Main, Footer } from "./components";
 import * as state from "./store";
 import Navigo from "navigo";
 const router = new Navigo(window.location.origin);
@@ -14,9 +14,10 @@ function render(st) {
   document.querySelector("#root").innerHTML = `
     ${Header(st)}
     ${Logo()}
-  ${Main(st)}
-  ${Footer()}
-`;
+    ${pageTitle(st)}
+    ${Main(st)}
+    ${Footer()}
+  `;
   if (st.page === "KayakTracker") {
     trackMyKayakFunctionality();
   }

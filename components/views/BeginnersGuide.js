@@ -1,6 +1,5 @@
 export default () => `
   <a id="#topOfBG"></a>
-
   <nav class="anchorButtons">
     <button><a href="#holdPaddle">Holding the Paddle</a></button>
     <button><a href="#strokes">Basic Strokes</a></button>

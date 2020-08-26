@@ -1,5 +1,5 @@
 export default {
-  header: "Track My Kayak",
+  title: "Track My Kayak",
   welcome: "Record Your Journey",
   page: "KayakTracker"
 };

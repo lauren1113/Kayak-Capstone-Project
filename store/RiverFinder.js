@@ -1,5 +1,5 @@
 export default {
-  header: "Find a River",
+  title: "Find a River",
   welcome: "Your Next Adventure Awaits!",
   page: "RiverFinder"
 };
