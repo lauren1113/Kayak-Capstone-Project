@@ -1,4 +1,5 @@
 export default {
-  header: "Safety Tips for Successful Kayak Trips",
+  header: "Safety Tips",
+  welcome: "For Successful Kayak Trips",
   page: "SafetyTips"
 };

@@ -30,10 +30,13 @@ function getMapData() {
   const successCallback = position => {
     if (position) {
       if (firstTime) {
-        const marker = L.marker([
-          position.coords.latitude.toFixed(2),
-          position.coords.longitude.toFixed(2)
-        ]).addTo(myMap);
+        const marker = L.marker(
+          [
+            position.coords.latitude.toFixed(2),
+            position.coords.longitude.toFixed(2)
+          ],
+          { opacity: 0.5 }
+        ).addTo(myMap);
         firstTime = false;
       }
       myMap.setView(

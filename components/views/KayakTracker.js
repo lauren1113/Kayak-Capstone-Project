@@ -1,5 +1,5 @@
 export default () => `
-  <div id="trackNmap">
+  <div id="trackerPageContainer">
     <div id="kayakTracker">
       <!-- [START/STOP BUTTON] -->
         <input type="button" value="Start Tracking" class="tracking" id="sw-startButton" disabled/>
@@ -21,11 +21,8 @@ export default () => `
       <!-- [RESET BUTTON] -->
         <input type="button" value="Reset" class="tracking" id="sw-resetButton" disabled/>
       </div>
-      <div id="locationDetails">
       <div class="mapContainer">
-        <div id="trackerMap" style="height:400px;width:auto">></div>
-        <p class="latlong">latitude: <span id="lat"></span>° <br>
-        <p class="latlong">longitude: <span id="lon"></span>°
+        <div id="trackerMap" style="height:700px;width:650px">></div>
       </div>
   </div>
 `;
