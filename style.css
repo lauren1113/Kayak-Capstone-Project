@@ -11,6 +11,11 @@
   margin: 10px 10px 5px 10px;
 }
 
+#footer {
+  text-align: center;
+  margin: 5px 10px 10px 10px;
+}
+
 #navButtons {
   position: relative;
   transform: translate(2.5%, -155%);
@@ -106,6 +111,11 @@ p {
   justify-content: center;
 }
 
+#homeSummary {
+  font-size: 20px;
+  align-content: center;
+}
+
 .anchorButtons {
   text-align: center;
   margin: 5px;
@@ -175,7 +185,6 @@ h6 {
 #mntnsGirl, #kayakDogs {
   max-height: 330px;
   width: auto;
-  padding-top: 7%;
   justify-content: center;
 }
 
