@@ -1,7 +1,7 @@
 * {
   background-color: #191970;
   color: #E6E6FA;
-  padding: 5px 30px;
+  padding: 5px 20px;
   font-family: "Ink Free";
 }
 
@@ -13,7 +13,8 @@
 
 #footer {
   text-align: center;
-  margin: 5px 10px 10px 10px;
+  padding-top: 20px;
+  padding-bottom: 3px;
 }
 
 #navButtons {
@@ -24,7 +25,7 @@
   margin: 0px;
   padding: 0px;
   font-family: "Segoe Print";
-  color: #252252;
+  color: #151336;
   border-radius: 6px;
   display: flex;
   flex-flow: row nowrap;
@@ -33,7 +34,7 @@
 }
 
 .navBtn {
-  color: #252252;
+  color: #151336;
   background-color: transparent;
   text-align: center;
   padding: 0px;
@@ -111,9 +112,34 @@ p {
   justify-content: center;
 }
 
+#homeTextBox {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
 #homeSummary {
   font-size: 20px;
-  align-content: center;
+  padding-top: 0px;
+  padding-bottom: 35px;
+}
+
+.createAcctBtn {
+  border: 2px solid #E6E6FA;
+  background-image: url("https://images.pexels.com/photos/1556797/pexels-photo-1556797.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+  color: #252252;
+  border-radius: 4px;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+
+}
+
+.createAcctBtn:hover {
+  color: #E6E6Fa;
+  background-image: url("https://images.pexels.com/photos/1646311/pexels-photo-1646311.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
 }
 
 .anchorButtons {
@@ -153,7 +179,7 @@ h6 {
   font-size: 35px;
   text-decoration-line: underline;
   text-decoration-style: wavy;
-  font-style: bold;
+  font-weight: bold;
   padding: 0px;
   margin-bottom: 0px;
 }
