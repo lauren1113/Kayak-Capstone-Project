@@ -6,7 +6,7 @@ export default () => `
       <!-- [DISPLAY DISTANCE] -->
         <div class="trackerTopic">
           <h5 class="tracking">Distance Traveled</h5>
-          <div id="sw-distance">00.00</div>
+          <div id="sw-distance">00.00</div>miles
         </div>
       <!-- [DISPLAY TIMER] -->
         <div class="trackerTopic">
@@ -21,8 +21,21 @@ export default () => `
       <!-- [RESET BUTTON] -->
         <input type="button" value="Reset" class="tracking" id="sw-resetButton" disabled/>
       </div>
-      <div class="mapContainer">
-        <div id="trackerMap" style="height:700px;width:650px">></div>
+      <div id="mapAndMeter">
+        <div class="mapContainer">
+         <div id="trackerMap" style="height:700px;width:650px">></div>
+        </div>
+        <br><br>
+        <div id="tripmeter">
+          <p>
+           Starting Location (lat, lon): <span id="startLat">???</span>°, <span id="startLon">???</span>°
+          </p>
+          <p>
+            Current Location (lat, lon): <span id="currentLat">???</span>°, <span id="currentLon">???</span>°
+          </p>
+            <p>Distance Traveled: <span id="sw-distance">0</span>mi
+          </p>
+        </div>
       </div>
   </div>
 `;

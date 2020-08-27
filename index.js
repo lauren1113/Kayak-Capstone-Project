@@ -26,6 +26,7 @@ function render(st) {
 function trackMyKayakFunctionality() {
   getMapData();
   stopwatch();
+  calculateDistance();
 }
 
 function getMapData() {
@@ -86,7 +87,6 @@ function stopwatch() {
   let sw = {
     etime: null,
     edist: null,
-    epace: null,
     ereset: null,
     estart: null,
     timer: null,
@@ -95,8 +95,6 @@ function stopwatch() {
     init: function() {
       // Get HTML Elements
       sw.etime = document.getElementById("sw-time");
-      sw.edist = document.getElementById("sw-distance");
-      sw.epace = document.getElementById("sw-pace");
       sw.ereset = document.getElementById("sw-resetButton");
       sw.estart = document.getElementById("sw-startButton");
 
@@ -137,6 +135,7 @@ function stopwatch() {
       // start(): start the stopwatch
 
       sw.timer = setInterval(sw.tick, 1000);
+      sw.edist = calculateDistance();
       sw.estart.value = "Stop";
       sw.estart.removeEventListener("click", sw.start);
       sw.estart.addEventListener("click", sw.stop);
@@ -169,35 +168,50 @@ function stopwatch() {
   window.addEventListener("load", sw.init);
 }
 
-// Calculate Distance
-let startingLoc = (startingLoc.coords.latitude, startingLoc.coords.longitude);
-navigator.geolocation.getCurrentPosition(position => {
-  startingLoc = position;
-  startingLoc.coords.latitude;
-  startingLoc.coords.longitude;
-});
-console.log(startingLoc);
-
-let currentLoc = (currentLoc.coords.latitude, currentLoc.coords.longitude);
-navigator.geolocation.watchPosition(position => {
-  currentLoc = position;
-  currentLoc.coords.latitude;
-  currentLoc.coords.longitude;
-});
-console.log(currentLoc);
-
-navigator.geolocation.watchPosition(position => {
-  calculateDistance(
-    startingLoc.coords.latitude,
-    startingLoc.coords.longitude,
-    currentLoc.coords.latitude,
-    currentLoc.coords.longitude
-  );
-});
-
-function calculateDistance(lat1, lat2, lon1, lon2) {
-  const latDist = lat2 - lat1;
-  const lonDist = lon2 - lon1;
+// calculate Distance
+function calculateDistance() {
+  window.onload = function() {
+    let startPos;
+    navigator.geolocation.getCurrentPosition(function(position) {
+      startPos = position;
+      document.getElementById(
+        "startLat"
+      ).innerHTML = startPos.coords.latitude.toFixed(2);
+      document.getElementById(
+        "startLon"
+      ).innerHTML = startPos.coords.longitude.toFixed(2);
+    });
+  };
+  navigator.geolocation.watchPosition(function(position) {
+    document.getElementById(
+      "currentLat"
+    ).innerHTML = position.coords.latitude.toFixed(2);
+    document.getElementById(
+      "currentLon"
+    ).innerHTML = position.coords.longitude.toFixed(2);
+    document.getElementById("sw-distance").innerHTML = calculateDistance(
+      startPos.coords.latitude,
+      startPos.coords.longitude,
+      position.coords.latitude,
+      position.coords.longitude
+    );
+  });
+  function calculateMilesTraveled(lat1, lon1, lat2, lon2) {
+    const radlat1 = (Math.PI * lat1) / 180;
+    const radlat2 = (Math.PI * lat2) / 180;
+    const theta = lon1 - lon2;
+    const radtheta = (Math.PI * theta) / 180;
+    let dist =
+      Math.sin(radlat1) * Math.sin(radlat2) +
+      Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    if (dist > 1) {
+      dist = 1;
+    }
+    dist = Math.acos(dist);
+    dist = (dist * 180) / Math.PI;
+    dist = dist * 60 * 1.1515;
+    return dist;
+  }
 }
 
 // FIREBASE USER DATABASE
