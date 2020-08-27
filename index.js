@@ -221,7 +221,6 @@ function calculateDistance() {
 
 // calculate Average Pace
 function calculateAvgPace() {
-  let dist;
   document.getElementById("#sw-pace").innerHTML = dist / sw.etime.innerHTML;
   return calculateAvgPace;
 }
