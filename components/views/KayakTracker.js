@@ -16,7 +16,7 @@ export default () => `
       <!-- [DISPLAY PACE] -->
       <div class="trackerTopic">
           <h5 class="tracking">Average Pace Per Mile</h5>
-          <div id="sw-pace">00.00</div>
+          <div id="sw-pace">00:00:00</div>
         </div>
       <!-- [RESET BUTTON] -->
         <input type="button" value="Reset" class="tracking" id="sw-resetButton" disabled/>

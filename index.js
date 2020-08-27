@@ -27,6 +27,7 @@ function trackMyKayakFunctionality() {
   getMapData();
   stopwatch();
   calculateDistance();
+  calculateAvgPace();
 }
 
 function getMapData() {
@@ -87,6 +88,7 @@ function stopwatch() {
   let sw = {
     etime: null,
     edist: null,
+    epace: null,
     ereset: null,
     estart: null,
     timer: null,
@@ -136,6 +138,7 @@ function stopwatch() {
 
       sw.timer = setInterval(sw.tick, 1000);
       sw.edist = calculateDistance();
+      sw.epace = calculateAvgPace();
       sw.estart.value = "Stop";
       sw.estart.removeEventListener("click", sw.start);
       sw.estart.addEventListener("click", sw.stop);
@@ -146,6 +149,8 @@ function stopwatch() {
 
       clearInterval(sw.timer);
       sw.timer = null;
+      sw.edist = null;
+      sw.epace = null;
       sw.estart.value = "Start";
       sw.estart.removeEventListener("click", sw.stop);
       sw.estart.addEventListener("click", sw.start);
@@ -212,6 +217,13 @@ function calculateDistance() {
     dist = dist * 60 * 1.1515;
     return dist;
   }
+}
+
+// calculate Average Pace
+function calculateAvgPace() {
+  let dist;
+  document.getElementById("#sw-pace").innerHTML = dist / sw.etime.innerHTML;
+  return calculateAvgPace;
 }
 
 // FIREBASE USER DATABASE
