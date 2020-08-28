@@ -19,6 +19,8 @@ function render(st) {
     ${Main(st)}
     ${Footer()}
   `;
+
+  // only load tracker functionality when on kayak tracker page
   if (st.page === "KayakTracker") {
     trackMyKayakFunctionality();
   }
@@ -36,6 +38,7 @@ function getMapData() {
   const successCallback = position => {
     if (position) {
       if (firstTime) {
+        // create marker showing current location on map
         const marker = L.marker(
           [
             position.coords.latitude.toFixed(2),
@@ -58,16 +61,17 @@ function getMapData() {
     console.log(error);
   };
   navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  // watch location and update map marker as location changes
   const watchId = navigator.geolocation.watchPosition(
     successCallback,
     errorCallback
   );
-  // position options: accuracy of position and timeout
+  // enable high accuracy of position and timeout after 5 seconds
   navigator.geolocation.watchPosition(successCallback, errorCallback, {
     enableHighAccuracy: true,
     timeout: 5000
   });
-  // create map
+  // create map with leaflet API
   const attribution =
     'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
   const tileUrl =
@@ -87,8 +91,6 @@ function getMapData() {
 function stopwatch() {
   let sw = {
     etime: null,
-    edist: null,
-    epace: null,
     ereset: null,
     estart: null,
     timer: null,
@@ -137,8 +139,6 @@ function stopwatch() {
       // start(): start the stopwatch
 
       sw.timer = setInterval(sw.tick, 1000);
-      sw.edist = calculateDistance();
-      sw.epace = calculateAvgPace();
       sw.estart.value = "Stop";
       sw.estart.removeEventListener("click", sw.start);
       sw.estart.addEventListener("click", sw.stop);
@@ -149,8 +149,6 @@ function stopwatch() {
 
       clearInterval(sw.timer);
       sw.timer = null;
-      sw.edist = null;
-      sw.epace = null;
       sw.estart.value = "Start";
       sw.estart.removeEventListener("click", sw.stop);
       sw.estart.addEventListener("click", sw.start);
@@ -175,6 +173,14 @@ function stopwatch() {
 
 // calculate Distance
 function calculateDistance() {
+  // Attach listeners here?
+  //  sw.ereset.addEventListener("click", sw.reset);
+  //  sw.ereset.disabled = false;
+  //  sw.estart.addEventListener("click", sw.start);
+  //  sw.estart.disabled = false;
+
+  // get location when page is opened, save as starting location
+  // want to tie starting loc to "sw-start" event listener instead...saving to test
   window.onload = function() {
     let startPos;
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -195,10 +201,10 @@ function calculateDistance() {
       "currentLon"
     ).innerHTML = position.coords.longitude.toFixed(2);
     document.getElementById("sw-distance").innerHTML = calculateDistance(
-      startPos.coords.latitude,
-      startPos.coords.longitude,
-      position.coords.latitude,
-      position.coords.longitude
+      (startPos.coords.latitude = lat1),
+      (startPos.coords.longitude = lon1),
+      (position.coords.latitude = lat2),
+      (position.coords.longitude = lon2)
     );
   });
   function calculateMilesTraveled(lat1, lon1, lat2, lon2) {
@@ -221,7 +227,7 @@ function calculateDistance() {
 
 // calculate Average Pace
 function calculateAvgPace() {
-  document.getElementById("#sw-pace").innerHTML = dist / sw.etime.innerHTML;
+  document.getElementById("#sw-pace").innerHTML = dist / sw.etime;
   return calculateAvgPace;
 }
 
