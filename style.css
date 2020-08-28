@@ -437,3 +437,12 @@ h6 {
   text-align: center;
   font-size: 30px;
 }
+
+/* MEDIA QUERIES */
+
+/* iPhone 11 */
+@media (device-width: 414px) and (device-height: 896px) {
+  #trackerPageContainer {
+    flex-direction: column;
+  }
+}
