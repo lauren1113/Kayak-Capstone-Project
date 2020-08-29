@@ -1,6 +1,6 @@
-import loginPageLink from "../../store/loginPageLink";
-
 export default () => `
+<button class="createAcctBtn"><a href="AccountLogin" data-navigo>Click Here to Sign In or Create An Account</a></button>
+
   <div id="homeBox">
 
     <img id="kayakDogs" src="https://github.com/lauren1113/Kayak-Capstone-Project/blob/master/Documents/Design/Kayak%20Photos/patrick-carr-kNvMlMCzY9A-unsplash.jpg?raw=true"/>
@@ -10,6 +10,4 @@ export default () => `
     <img id="mntnsGirl" src="https://github.com/lauren1113/Kayak-Capstone-Project/blob/master/Documents/Design/Kayak%20Photos/kalen-emsley-kGSapVfg8Kw-unsplash-cropped4home.jpg?raw=true"/>
 
   </div>
-
-  <button class="createAcctBtn"><a href="AccountLogin" data-navigo>Click Here to Sign In or Create An Account</a></button>
 `;

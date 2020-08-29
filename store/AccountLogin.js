@@ -1,5 +1,5 @@
 export default {
   title: "Welcome to Kayak Fanatic!",
-  welcome: "Please Login or Create Your Account",
+  welcome: "Sign In or Create An Account Below!",
   page: "AccountLogin"
 };

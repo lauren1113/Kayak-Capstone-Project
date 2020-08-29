@@ -1,6 +1,8 @@
 import { Header, Logo, pageTitle, Main, Footer } from "./components";
 import * as state from "./store";
 import Navigo from "navigo";
+import "./env";
+import { auth, db } from "firebase/app";
 
 const router = new Navigo(window.location.origin);
 router
@@ -19,6 +21,8 @@ function render(st) {
     ${Main(st)}
     ${Footer()}
   `;
+  router.updatePageLinks();
+  addSignInListeners(st);
   // only load tracker functionality when on kayak tracker page
   if (st.page === "KayakTracker") {
     trackMyKayakFunctionality();
@@ -231,7 +235,7 @@ function calculateAvgPace() {
   return calculateAvgPace;
 }
 
-// FIREBASE USER DATABASE
+// [FIREBASE USER DATABASE]
 
 // Firebase App (the core Firebase SDK) is always required and
 // must be listed before other Firebase SDKs
@@ -252,168 +256,144 @@ const firebaseConfig = {
   measurementId: "G-J1P8TNN3S2"
 };
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+function addSignInListeners(st) {
+  addLogInAndOutListener(state.User);
+  listenForAuthChange();
+  listenForCreateAccount();
+  listenForSignIn();
+}
 
-firebase
-  .auth()
-  .createUserWithEmailAndPassword(email, password)
-  .catch(function(error) {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ...
-  });
-email - password.html;
-
-function toggleSignIn() {
-  if (firebase.autho().currentUser) {
-    // [START signout]
-    firebase.auth().signOut();
-    // [END signout]
-  } else {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    if (email.length < 4) {
-      alert("Please enter an email address.");
-      return;
-    }
-    if (password.length < 4) {
-      alert("Please enter a password.");
-      return;
-    }
-    // Sign in with email and password:
-    // [START auth with email]
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .catch(function(error) {
-        // Handling errors
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // Wrong Password
-        if (errorCode === "auth/wrong-password") {
-          alert("Incorrect Password.");
-        } else {
-          alert(errorMessage);
-        }
-        console.log(error);
-        document.getElementById("quickstart-sign-in").disabled = false;
+// FUNCTIONS & EVENT LISTENERS
+function addLogInAndOutListener(user) {
+  // select link in header
+  document.querySelector("header a").addEventListener("click", event => {
+    // if user is logged in,
+    if (user.loggedIn) {
+      event.preventDefault();
+      // log out functionality
+      auth.signOut().then(() => {
+        console.log("User logged out.");
+        logOutUserInDb(user.email);
+        resetUserInState();
+        // update user in database
+        db.collection("users").get;
+        render(state.Home);
       });
-    // [END auth with email]
-  }
-  document.getElementById("quickstart-sign-in").disabled - true;
-}
-
-// Sign Up Button Press
-function handleSignUp() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  if (email.length < 4) {
-    alert("Please enter an email address.");
-    return;
-  }
-  if (password.length < 4) {
-    alert("Please enter a password.");
-    return;
-  }
-  // Create User with email & pass
-  // [START create with email]
-  firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
-    .catch(function(error) {
-      // Handle errors
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // START exclude
-      if (errorCode == "auth/weak-pawssword") {
-        alert("The password is too weak.");
-      } else {
-        alert(errorMessage);
-      }
-      console.log(error);
-      // END exclude
-    });
-}
-
-// Send Email Verification to User
-function sendEmailVerification() {
-  // [START send email verification]
-  firebase
-    .auth()
-    .currentUser.sendEmailVerification()
-    .then(function() {
-      alert("Email Verification Sent!");
-    });
-}
-
-function sendPasswordReset() {
-  const email = document.getElementById("email").value;
-  firebase
-    .auth()
-    .sendPasswordResetEmail(email)
-    .then(function() {
-      alert("Password Reset Email Sent!");
-    })
-    .catch(function(error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      if (errorCode == "auth/invalid-email") {
-        alert(errorMessage);
-      } else if (errorCode == "auth/user-not-found") {
-        alert(errorMessage);
-      }
-      console.log(error);
-    });
-}
-
-// Firebase Login Event Listeners
-function initApp() {
-  // [START listening for auth state changes]
-  firebase.auth().onAuthStateChanged(function(user) {
-    document.getElementById("quickstart-verify-email").disabled = true;
-    if (user) {
-      // user is signed in
-      const displayName = user.displayName;
-      const email = user.email;
-      const emailVerified = user.emailVerified;
-      const photoURL = user.photoURL;
-      const uid = user.uid;
-      const providerData = user.providerData;
-      document.getElementById("quickstart-sign-in-status").textContent =
-        "Signed in";
-      document.getElementById("quickstart-sign-in").textContent = "Sign out";
-      document.getElementById(
-        "quickstart-account-details"
-      ).textContent = JSON.stringify(user, null, " ");
-      if (!emailVerified) {
-        document.getElementById("quickstart-verify-email").disabled = false;
-      }
-    } else {
-      // User is signed out
-      document.getElementById("quickstart-sign-in-status").textContent =
-        "Signed out";
-      document.getElementById("quickstart-sign-in").textContent = "Sign in";
-      document.getElementById("quickstart-account-details").textContent =
-        "null";
+      console.log(state.User);
     }
-    document.getElementById("quickstart-sign-in").disabled = false;
+    // if user is logged out, clicking the link will render sign in page
   });
-  // [END auth state listener]
-  document
-    .getElementById("quickstart-sign-in")
-    .addEventListener("click", toggleSignIn, false);
-  document
-    .getElementById("quickstart-sign-up")
-    .addEventListener("click", handleSignUp, false);
-  document
-    .getElementById("quickstart-verify-email")
-    .addEventListener("click", sendEmailVerification, false);
-  document
-    .getElementById("quickstart-password-reset")
-    .addEventListener("click", sendPasswordReset, false);
 }
-window.onload = function() {
-  initApp();
-};
+function logOutUserInDb(email) {
+  if (state.User.loggedIn) {
+    db.collection("users")
+      .get()
+      .then(snapshot =>
+        snapshot.docs.forEach(doc => {
+          if (email === doc.data().email) {
+            let id = doc.id;
+            db.collection("users")
+              .doc(id)
+              .update({ signedIn: false });
+          }
+        })
+      );
+    console.log("User signed out in db");
+  }
+}
+function resetUserInState() {
+  state.User.username = "";
+  state.User.firstName = "";
+  state.User.lastName = "";
+  state.User.email = "";
+  state.User.loggedIn = false;
+}
+
+function listenForAuthChange() {
+  // log user object from auth if a user is signed in
+  auth.onAuthStateChanged(user => (user ? console.log(user) : ""));
+}
+
+function listenForCreateAccount(st) {
+  if (st.page === "AccountLogin") {
+    document
+      .getElementById("#newUserForm")
+      .addEventListener("submit", event => {
+        event.preventDefault();
+        // convert HTML elements to Array
+        let inputList = Array.from(event.target.elements);
+        // remove submit button from list
+        inputList.pop();
+        const inputs = inputList.map(input => input.value);
+        let firstName = inputs[0];
+        let lastName = inputs[1];
+        let email = inputs[2];
+        let password = inputs[3];
+
+        // create user in Firebase
+        auth.createUserWithEmailAndPassword(email, password).then(response => {
+          console.log("User registered!");
+          console.log(response);
+          console.log(response.user);
+          addUserToStateAndDb(firstName, lastName, email, password);
+          render(state.Home);
+        });
+      });
+  }
+}
+function addUserToStateAndDb(first, last, email, pass) {
+  state.User.username = first + last;
+  state.User.firstName = first;
+  state.User.lastName = last;
+  state.User.email = email;
+  state.User.loggedIn = true;
+
+  db.collection("Users").add({
+    firstName: first,
+    lastName: last,
+    email: email,
+    password: pass,
+    signedIn: true
+  });
+}
+
+function listenForSignIn(st) {
+  if (st.page === "AccountLogin") {
+    document.getElementById("#loginForm").addEventListener("submit", event => {
+      event.preventDefault();
+      // convert HTML elements to Array
+      let inputList = Array.from(event.target.elements);
+      // remove submit button from list
+      inputList.pop();
+      const inputs = inputList.map(input => input.value);
+      let email = inputs[0];
+      let password = inputs[1];
+      auth.signInWithEmailAndPassword(email, password).then(() => {
+        console.log("User signed in");
+        getUserFromDb(email).then(() => render(state.Home));
+      });
+    });
+  }
+}
+function getUserFromDb(email) {
+  return db
+    .collection("Users")
+    .get()
+    .then(snapshot =>
+      snapshot.docs.forEach(doc => {
+        if (email === doc.data().email) {
+          let id = doc.id;
+          db.collection("Users")
+            .doc(id)
+            .update({ signedIn: true });
+          let user = doc.data();
+          state.User.username = user.firstName + user.lastName;
+          state.User.firstName = user.firstName;
+          state.User.lastName = user.lastName;
+          state.User.email = email;
+          state.User.loggedIn = true;
+          console.log(state.User);
+        }
+      })
+    );
+}

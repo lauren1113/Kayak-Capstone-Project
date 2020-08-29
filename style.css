@@ -11,10 +11,18 @@
   margin: 10px 10px 5px 10px;
 }
 
-#footer {
-  text-align: center;
-  padding-top: 20px;
-  padding-bottom: 3px;
+#header-login {
+  position: absolute;
+  top: 22%;
+  right: -3%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  border: 3px solid #E6E6FA;
+  border-radius: 4px;
+}
+
+#header-login:hover, {
+  background-color: #191970;
 }
 
 #navButtons {
@@ -41,7 +49,7 @@
   padding: 0px;
 }
 
-.navBtn:hover {
+.navBtn:hover, {
   background-color: #191970;
 }
 
@@ -61,6 +69,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: transparent;
+}
+
+#footer {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 3px;
 }
 
 #TY-footer {
@@ -126,24 +140,39 @@ p {
 }
 
 .createAcctBtn {
-  color: #121129;
   background-image: url("https://images.unsplash.com/photo-1471079688237-3ac9a55f1d6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80");
   border: 2px solid #E6E6FA;
   border-radius: 4px;
-  font-size: 25px;
+  color: #121129;
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
-  padding: 10px;
+  padding: 15px;
+  padding-left: 25px;
   display: block;
+  margin-bottom: 35px;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 70%;
 
 }
 
 .createAcctBtn:hover {
   color: #E6E6Fa;
   background-image: url("https://images.pexels.com/photos/1646311/pexels-photo-1646311.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+}
+
+.loginPage {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.loginHead {
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  font-size: 40px;
+  font-weight: bold;
 }
 
 .anchorButtons {
