@@ -235,7 +235,7 @@ export default () => `
   </nav>
   <br>
 
-  <p>For more information about how to travel safely, be sure to check out: <a href="/safety.html">Safety Tips!</a></p>
-  <p>To make sure you have everything you need for your next adventure, check our <a href="/packlist.html">Packing List.</a></p>
-  <p>To find the right kayak to fit your needs, try out our <a href="/quiz.html">Kayak Matchmaking Quiz!</a></p>
+  <p>For more information about how to travel safely, be sure to check out: <a href="Safety Tips">Safety Tips!</a></p>
+  <p>To make sure you have everything you need for your next adventure, check our <a href="Packing List">Packing List.</a></p>
+  <p>To find the right kayak to fit your needs, try out our <a href="Kayak Quiz">Kayak Matchmaking Quiz!</a></p>
 `;
