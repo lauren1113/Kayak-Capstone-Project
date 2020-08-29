@@ -24,6 +24,9 @@ function render(st) {
     trackMyKayakFunctionality();
   }
 }
+const router = new Navigo(window.location.origin);
+router.on(":page", handleRoute).on("/", () => render())
+router.on("/", () => console.log("Visiting Home Page")).resolve();
 
 function trackMyKayakFunctionality() {
   getMapData();
