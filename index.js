@@ -19,12 +19,12 @@ function render(st) {
     ${Main(st)}
     ${Footer()}
   `;
-
   // only load tracker functionality when on kayak tracker page
   if (st.page === "KayakTracker") {
     trackMyKayakFunctionality();
   }
 }
+
 function trackMyKayakFunctionality() {
   getMapData();
   stopwatch();
@@ -38,7 +38,7 @@ function getMapData() {
   const successCallback = position => {
     if (position) {
       if (firstTime) {
-        // create marker showing current location on map
+        // create marker showing starting location on map
         const marker = L.marker(
           [
             position.coords.latitude.toFixed(2),
@@ -265,3 +265,155 @@ firebase
     // ...
   });
 email - password.html;
+
+function toggleSignIn() {
+  if (firebase.autho().currentUser) {
+    // [START signout]
+    firebase.auth().signOut();
+    // [END signout]
+  } else {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    if (email.length < 4) {
+      alert("Please enter an email address.");
+      return;
+    }
+    if (password.length < 4) {
+      alert("Please enter a password.");
+      return;
+    }
+    // Sign in with email and password:
+    // [START auth with email]
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch(function(error) {
+        // Handling errors
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // Wrong Password
+        if (errorCode === "auth/wrong-password") {
+          alert("Incorrect Password.");
+        } else {
+          alert(errorMessage);
+        }
+        console.log(error);
+        document.getElementById("quickstart-sign-in").disabled = false;
+      });
+    // [END auth with email]
+  }
+  document.getElementById("quickstart-sign-in").disabled - true;
+}
+
+// Sign Up Button Press
+function handleSignUp() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  if (email.length < 4) {
+    alert("Please enter an email address.");
+    return;
+  }
+  if (password.length < 4) {
+    alert("Please enter a password.");
+    return;
+  }
+  // Create User with email & pass
+  // [START create with email]
+  firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .catch(function(error) {
+      // Handle errors
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // START exclude
+      if (errorCode == "auth/weak-pawssword") {
+        alert("The password is too weak.");
+      } else {
+        alert(errorMessage);
+      }
+      console.log(error);
+      // END exclude
+    });
+}
+
+// Send Email Verification to User
+function sendEmailVerification() {
+  // [START send email verification]
+  firebase
+    .auth()
+    .currentUser.sendEmailVerification()
+    .then(function() {
+      alert("Email Verification Sent!");
+    });
+}
+
+function sendPasswordReset() {
+  const email = document.getElementById("email").value;
+  firebase
+    .auth()
+    .sendPasswordResetEmail(email)
+    .then(function() {
+      alert("Password Reset Email Sent!");
+    })
+    .catch(function(error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      if (errorCode == "auth/invalid-email") {
+        alert(errorMessage);
+      } else if (errorCode == "auth/user-not-found") {
+        alert(errorMessage);
+      }
+      console.log(error);
+    });
+}
+
+// Firebase Login Event Listeners
+function initApp() {
+  // [START listening for auth state changes]
+  firebase.auth().onAuthStateChanged(function(user) {
+    document.getElementById("quickstart-verify-email").disabled = true;
+    if (user) {
+      // user is signed in
+      const displayName = user.displayName;
+      const email = user.email;
+      const emailVerified = user.emailVerified;
+      const photoURL = user.photoURL;
+      const uid = user.uid;
+      const providerData = user.providerData;
+      document.getElementById("quickstart-sign-in-status").textContent =
+        "Signed in";
+      document.getElementById("quickstart-sign-in").textContent = "Sign out";
+      document.getElementById(
+        "quickstart-account-details"
+      ).textContent = JSON.stringify(user, null, " ");
+      if (!emailVerified) {
+        document.getElementById("quickstart-verify-email").disabled = false;
+      }
+    } else {
+      // User is signed out
+      document.getElementById("quickstart-sign-in-status").textContent =
+        "Signed out";
+      document.getElementById("quickstart-sign-in").textContent = "Sign in";
+      document.getElementById("quickstart-account-details").textContent =
+        "null";
+    }
+    document.getElementById("quickstart-sign-in").disabled = false;
+  });
+  // [END auth state listener]
+  document
+    .getElementById("quickstart-sign-in")
+    .addEventListener("click", toggleSignIn, false);
+  document
+    .getElementById("quickstart-sign-up")
+    .addEventListener("click", handleSignUp, false);
+  document
+    .getElementById("quickstart-verify-email")
+    .addEventListener("click", sendEmailVerification, false);
+  document
+    .getElementById("quickstart-password-reset")
+    .addEventListener("click", sendPasswordReset, false);
+}
+window.onload = function() {
+  initApp();
+};

@@ -33,7 +33,7 @@ export default () => `
           <p>
             Current Location (lat, lon): <span id="currentLat">???</span>°, <span id="currentLon">???</span>°
           </p>
-            <p>Distance Traveled: <span id="sw-distance">0</span>mi
+            <p>Distance Traveled: <span id="sw-distance">0.00</span>mi
           </p>
         </div>
       </div>
