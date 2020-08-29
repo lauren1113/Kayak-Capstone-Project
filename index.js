@@ -1,8 +1,26 @@
 import { Header, Logo, pageTitle, Main, Footer } from "./components";
 import * as state from "./store";
 import Navigo from "navigo";
+import { capitalize } from "lodash";
+import axios from "axios";
 import "./env";
-import { auth, db } from "firebase/app";
+import { auth, db } from "./firebase";
+
+const coll = db.collection("Users");
+
+axios
+  .get(
+    "https://maps.googleapis.com/maps/api/js?key=${process.env.GM_API_KEY}&callback=initMap"
+  )
+  .then(response => console.log(response.data));
+
+axios
+  .get(`https://api.github.com/users/lauren1113/repos`, {
+    headers: {
+      Authorization: `token ${process.env.GITHUB_TOKEN}`
+    }
+  })
+  .then(response => console.log(response.data));
 
 const router = new Navigo(window.location.origin);
 router
@@ -21,8 +39,10 @@ function render(st) {
     ${Main(st)}
     ${Footer()}
   `;
+
   router.updatePageLinks();
   addSignInListeners(st);
+
   // only load tracker functionality when on kayak tracker page
   if (st.page === "KayakTracker") {
     trackMyKayakFunctionality();
@@ -227,6 +247,7 @@ function calculateDistance() {
     dist = dist * 60 * 1.1515;
     return dist;
   }
+  calculateMilesTraveled();
 }
 
 // calculate Average Pace
@@ -234,6 +255,7 @@ function calculateAvgPace() {
   document.getElementById("#sw-pace").innerHTML = dist / sw.timer;
   return calculateAvgPace;
 }
+calculateAvgPace();
 
 // [FIREBASE USER DATABASE]
 
@@ -259,7 +281,7 @@ const firebaseConfig = {
 function addSignInListeners(st) {
   addLogInAndOutListener(state.User);
   listenForAuthChange();
-  listenForCreateAccount();
+  listenForRegister();
   listenForSignIn();
 }
 
@@ -276,7 +298,7 @@ function addLogInAndOutListener(user) {
         logOutUserInDb(user.email);
         resetUserInState();
         // update user in database
-        db.collection("users").get;
+        db.collection("Users").get;
         render(state.Home);
       });
       console.log(state.User);
@@ -286,13 +308,13 @@ function addLogInAndOutListener(user) {
 }
 function logOutUserInDb(email) {
   if (state.User.loggedIn) {
-    db.collection("users")
+    db.collection("Users")
       .get()
       .then(snapshot =>
         snapshot.docs.forEach(doc => {
           if (email === doc.data().email) {
             let id = doc.id;
-            db.collection("users")
+            db.collection("Users")
               .doc(id)
               .update({ signedIn: false });
           }
@@ -314,31 +336,29 @@ function listenForAuthChange() {
   auth.onAuthStateChanged(user => (user ? console.log(user) : ""));
 }
 
-function listenForCreateAccount(st) {
+function listenForRegister(st) {
   if (st.page === "AccountLogin") {
-    document
-      .getElementById("#newUserForm")
-      .addEventListener("submit", event => {
-        event.preventDefault();
-        // convert HTML elements to Array
-        let inputList = Array.from(event.target.elements);
-        // remove submit button from list
-        inputList.pop();
-        const inputs = inputList.map(input => input.value);
-        let firstName = inputs[0];
-        let lastName = inputs[1];
-        let email = inputs[2];
-        let password = inputs[3];
+    document.querySelector("form").addEventListener("submit", event => {
+      event.preventDefault();
+      // convert HTML elements to Array
+      let inputList = Array.from(event.target.elements);
+      // remove submit button from list
+      inputList.pop();
+      const inputs = inputList.map(input => input.value);
+      let firstName = inputs[0];
+      let lastName = inputs[1];
+      let email = inputs[2];
+      let password = inputs[3];
 
-        // create user in Firebase
-        auth.createUserWithEmailAndPassword(email, password).then(response => {
-          console.log("User registered!");
-          console.log(response);
-          console.log(response.user);
-          addUserToStateAndDb(firstName, lastName, email, password);
-          render(state.Home);
-        });
+      // create user in Firebase
+      auth.createUserWithEmailAndPassword(email, password).then(response => {
+        console.log("User registered!");
+        console.log(response);
+        console.log(response.User);
+        addUserToStateAndDb(firstName, lastName, email, password);
+        render(state.Home);
       });
+    });
   }
 }
 function addUserToStateAndDb(first, last, email, pass) {
@@ -359,7 +379,7 @@ function addUserToStateAndDb(first, last, email, pass) {
 
 function listenForSignIn(st) {
   if (st.page === "AccountLogin") {
-    document.getElementById("#loginForm").addEventListener("submit", event => {
+    document.querySelector("form").addEventListener("submit", event => {
       event.preventDefault();
       // convert HTML elements to Array
       let inputList = Array.from(event.target.elements);
