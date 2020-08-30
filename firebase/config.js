@@ -1,12 +1,12 @@
 import "../env";
 
 export default {
-  apiKey: process.env.FIREBASE_API,
-  authDomain: "kayak-fanatic-user-db.firebaseapp.com",
-  databaseURL: "https://kayak-fanatic-user-db.firebaseio.com",
-  projectId: "kayak-fanatic-user-db",
-  storageBucket: "kayak-fanatic-user-db.appspot.com",
-  messagingSenderId: "133365157512",
-  appId: process.env.FIREBASE_ID,
-  measurementId: "G-J1P8TNN3S2"
+  apiKey: "AIzaSyCTdwg4iJ7lxEZmU4J3_Rsp2Wk-0WHXUdA",
+  authDomain: "kayak-fanatic-users.firebaseapp.com",
+  databaseURL: "https://kayak-fanatic-users.firebaseio.com",
+  projectId: "kayak-fanatic-users",
+  storageBucket: "kayak-fanatic-users.appspot.com",
+  messagingSenderId: "722080831538",
+  appId: "1:722080831538:web:6f612088739bb09b6b842b",
+  measurementId: "G-KPXTHH4WGR"
 };

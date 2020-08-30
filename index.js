@@ -259,24 +259,8 @@ calculateAvgPace();
 
 // [FIREBASE USER DATABASE]
 
-// Firebase App (the core Firebase SDK) is always required and
-// must be listed before other Firebase SDKs
-let firebase = require("firebase/app");
-
-// Add the Firebase products that you want to use
-require("firebase/auth");
-require("firebase/firestore");
-
-const firebaseConfig = {
-  apiKey: "AIzaSyCqruQYeJVKqGCZpcXX9rQyYkKpOgMh5Ug",
-  authDomain: "kayak-fanatic-user-db.firebaseapp.com",
-  databaseURL: "https://kayak-fanatic-user-db.firebaseio.com",
-  projectId: "kayak-fanatic-user-db",
-  storageBucket: "kayak-fanatic-user-db.appspot.com",
-  messagingSenderId: "133365157512",
-  appId: "1:133365157512:web:0771a019978678752dd93d",
-  measurementId: "G-J1P8TNN3S2"
-};
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 
 function addSignInListeners(st) {
   addLogInAndOutListener(state.User);
