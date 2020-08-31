@@ -6,8 +6,6 @@ import axios from "axios";
 import "./env";
 import { auth, db } from "./firebase";
 
-const coll = db.collection("Users");
-
 axios
   .get(
     "https://maps.googleapis.com/maps/api/js?key=${process.env.GM_API_KEY}&callback=initMap"
@@ -23,6 +21,7 @@ axios
   .then(response => console.log(response.data));
 
 const router = new Navigo(window.location.origin);
+
 router
   .on(":page", handleRoute)
   .on("/", () => render(state.Home))
@@ -31,6 +30,10 @@ function handleRoute(params) {
   const page = params.page;
   render(state[page]);
 }
+
+router.updatePageLinks();
+addSignInListeners(st);
+
 function render(st) {
   document.querySelector("#root").innerHTML = `
     ${Header(st)}
@@ -39,9 +42,6 @@ function render(st) {
     ${Main(st)}
     ${Footer()}
   `;
-
-  router.updatePageLinks();
-  addSignInListeners(st);
 
   // only load tracker functionality when on kayak tracker page
   if (st.page === "KayakTracker") {
@@ -53,7 +53,7 @@ function trackMyKayakFunctionality() {
   getMapData();
   stopwatch();
   calculateDistance();
-  calculateAvgPace();
+  // calculateAvgPace();
 }
 
 function getMapData() {
@@ -85,7 +85,7 @@ function getMapData() {
     console.log(error);
   };
   navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-  // watch location and update map marker as location changes
+  // watch location and update map as location changes
   const watchId = navigator.geolocation.watchPosition(
     successCallback,
     errorCallback
@@ -195,60 +195,60 @@ function stopwatch() {
   window.addEventListener("load", sw.init);
 }
 
-// calculate Distance
-function calculateDistance() {
-  // Attach listeners here?
-  //  sw.ereset.addEventListener("click", sw.reset);
-  //  sw.ereset.disabled = false;
-  //  sw.estart.addEventListener("click", sw.start);
-  //  sw.estart.disabled = false;
+// [ Get lat/long using Geolocation, then use to Calculate Miles Traveled ]
 
-  // get location when page is opened, save as starting location
-  // want to tie starting loc to "sw-start" event listener instead...saving to test
-  window.onload = function() {
-    let startPos;
-    navigator.geolocation.getCurrentPosition(function(position) {
-      startPos = position;
-      document.getElementById(
-        "startLat"
-      ).innerHTML = startPos.coords.latitude.toFixed(2);
-      document.getElementById(
-        "startLon"
-      ).innerHTML = startPos.coords.longitude.toFixed(2);
-    });
-  };
-  navigator.geolocation.watchPosition(function(position) {
+// get current/starting position when page is opened
+
+window.onload = function() {
+  let startPos;
+  navigator.geolocation.getCurrentPosition(function(position) {
+    startPos = position;
     document.getElementById(
-      "currentLat"
-    ).innerHTML = position.coords.latitude.toFixed(2);
+      "startLat"
+    ).innerHTML = startPos.coords.latitude.toFixed(2);
     document.getElementById(
-      "currentLon"
-    ).innerHTML = position.coords.longitude.toFixed(2);
-    document.getElementById("sw-distance").innerHTML = calculateDistance(
-      (startPos.coords.latitude = lat1),
-      (startPos.coords.longitude = lon1),
-      (position.coords.latitude = lat2),
-      (position.coords.longitude = lon2)
-    );
+      "startLon"
+    ).innerHTML = startPos.coords.longitude.toFixed(2);
   });
-  function calculateMilesTraveled(lat1, lon1, lat2, lon2) {
-    const radlat1 = (Math.PI * lat1) / 180;
-    const radlat2 = (Math.PI * lat2) / 180;
-    const theta = lon1 - lon2;
-    const radtheta = (Math.PI * theta) / 180;
-    let dist =
-      Math.sin(radlat1) * Math.sin(radlat2) +
-      Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-    if (dist > 1) {
-      dist = 1;
-    }
-    dist = Math.acos(dist);
-    dist = (dist * 180) / Math.PI;
-    dist = dist * 60 * 1.1515;
-    return dist;
+};
+// watch position and update as user moves
+navigator.geolocation.watchPosition(function(position) {
+  document.getElementById(
+    "currentLat"
+  ).innerHTML = position.coords.latitude.toFixed(2);
+  document.getElementById(
+    "currentLon"
+  ).innerHTML = position.coords.longitude.toFixed(2);
+  document.getElementById("sw-distance").innerHTML = calculateDistance(
+    startPos.coords.longitude,
+    startPos.coords.longitude,
+    position.coords.latitude,
+    position.coords.longitude
+  ).toFixed(2);
+});
+
+// Convert different between starting lat & long to miles
+function calculateDistance(lat1, lon1, lat2, lon2) {
+  const radlat1 = (Math.PI * lat1) / 180;
+  const radlat2 = (Math.PI * lat2) / 180;
+  const theta = lon1 - lon2;
+  const radtheta = (Math.PI * theta) / 180;
+  let dist =
+    Math.sin(radlat1) * Math.sin(radlat2) +
+    Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+  if (dist > 1) {
+    dist = 1;
   }
-  calculateMilesTraveled();
+  dist = Math.acos(dist);
+  dist = (dist * 180) / Math.PI;
+  dist = dist * 60 * 1.1515;
+  return dist.toFixed(2);
 }
+calculateDistance();
+
+document
+  .getElementById("sw-startButton")
+  .addEventListener("click", calculateDistance);
 
 // calculate Average Pace
 function calculateAvgPace() {
@@ -278,12 +278,13 @@ function addLogInAndOutListener(user) {
       event.preventDefault();
       // log out functionality
       auth.signOut().then(() => {
-        console.log("User logged out.");
+        console.log("User logged out");
         logOutUserInDb(user.email);
         resetUserInState();
         // update user in database
         db.collection("Users").get;
         render(state.Home);
+        router.navigate("/Home");
       });
       console.log(state.User);
     }
@@ -341,6 +342,7 @@ function listenForRegister(st) {
         console.log(response.User);
         addUserToStateAndDb(firstName, lastName, email, password);
         render(state.Home);
+        router.navigate("/Home");
       });
     });
   }
@@ -375,6 +377,7 @@ function listenForSignIn(st) {
       auth.signInWithEmailAndPassword(email, password).then(() => {
         console.log("User signed in");
         getUserFromDb(email).then(() => render(state.Home));
+        router.navigate("/Home");
       });
     });
   }
@@ -390,6 +393,7 @@ function getUserFromDb(email) {
           db.collection("Users")
             .doc(id)
             .update({ signedIn: true });
+          console.log("user signed in in db");
           let user = doc.data();
           state.User.username = user.firstName + user.lastName;
           state.User.firstName = user.firstName;

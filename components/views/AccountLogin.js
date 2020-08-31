@@ -13,7 +13,7 @@ export default () => `
       </form>
     </div>
 
-    <div id="newUser">
+    <div id="register">
       <p class="loginHead">Create A New Account</p>
       <form id = "newUserForm" action="" method="POST">
         <label for="firstName">First Name: </label>
@@ -24,7 +24,7 @@ export default () => `
         <input type="email" name="email" id="email" placeholder="enter your email">
         <label for="password">Password: </label>
         <input type="password" name="password" id="password" placeholder="create a password">
-        <input type="submit" id="register-button" value="Create Account">
+        <input type="submit" id="register-button" value="Register">
       </form>
     </div>
 
