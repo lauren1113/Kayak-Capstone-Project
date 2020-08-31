@@ -52,6 +52,7 @@ function render(st) {
 function trackMyKayakFunctionality() {
   getMapData();
   stopwatch();
+  getLocation();
   calculateDistance();
   // calculateAvgPace();
 }
@@ -196,38 +197,38 @@ function stopwatch() {
 }
 
 // [ Get lat/long using Geolocation, then use to Calculate Miles Traveled ]
-
-// get current/starting position when page is opened
-
-window.onload = function() {
-  let startPos;
-  navigator.geolocation.getCurrentPosition(function(position) {
-    startPos = position;
+function getLocation() {
+  // get current/starting position when page is opened
+  window.onload = function() {
+    let startPos;
+    navigator.geolocation.getCurrentPosition(function(position) {
+      startPos = position;
+      document.getElementById(
+        "startLat"
+      ).innerHTML = startPos.coords.latitude.toFixed(2);
+      document.getElementById(
+        "startLon"
+      ).innerHTML = startPos.coords.longitude.toFixed(2);
+    });
+  };
+  // watch position and update as user moves
+  navigator.geolocation.watchPosition(function(position) {
     document.getElementById(
-      "startLat"
-    ).innerHTML = startPos.coords.latitude.toFixed(2);
+      "currentLat"
+    ).innerHTML = position.coords.latitude.toFixed(2);
     document.getElementById(
-      "startLon"
-    ).innerHTML = startPos.coords.longitude.toFixed(2);
+      "currentLon"
+    ).innerHTML = position.coords.longitude.toFixed(2);
+    document.getElementById("sw-distance").innerHTML = calculateDistance(
+      startPos.coords.latitude,
+      startPos.coords.longitude,
+      position.coords.latitude,
+      position.coords.longitude
+    );
   });
-};
-// watch position and update as user moves
-navigator.geolocation.watchPosition(function(position) {
-  document.getElementById(
-    "currentLat"
-  ).innerHTML = position.coords.latitude.toFixed(2);
-  document.getElementById(
-    "currentLon"
-  ).innerHTML = position.coords.longitude.toFixed(2);
-  document.getElementById("sw-distance").innerHTML = calculateDistance(
-    startPos.coords.longitude,
-    startPos.coords.longitude,
-    position.coords.latitude,
-    position.coords.longitude
-  ).toFixed(2);
-});
+}
 
-// Convert different between starting lat & long to miles
+// Convert difference between starting lat & long to miles
 function calculateDistance(lat1, lon1, lat2, lon2) {
   const radlat1 = (Math.PI * lat1) / 180;
   const radlat2 = (Math.PI * lat2) / 180;
@@ -236,9 +237,6 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   let dist =
     Math.sin(radlat1) * Math.sin(radlat2) +
     Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-  if (dist > 1) {
-    dist = 1;
-  }
   dist = Math.acos(dist);
   dist = (dist * 180) / Math.PI;
   dist = dist * 60 * 1.1515;
