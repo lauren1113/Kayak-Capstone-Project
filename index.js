@@ -32,7 +32,7 @@ function handleRoute(params) {
 }
 
 router.updatePageLinks();
-addSignInListeners(st);
+addSignInListeners(state);
 
 function render(st) {
   document.querySelector("#root").innerHTML = `
@@ -116,6 +116,7 @@ function getMapData() {
 function stopwatch() {
   let sw = {
     etime: null,
+    edist: null,
     ereset: null,
     estart: null,
     timer: null,
@@ -124,6 +125,7 @@ function stopwatch() {
     init: function() {
       // Get HTML Elements
       sw.etime = document.getElementById("sw-time");
+      sw.edist = document.getElementById("sw-distance");
       sw.ereset = document.getElementById("sw-resetButton");
       sw.estart = document.getElementById("sw-startButton");
 
@@ -164,6 +166,7 @@ function stopwatch() {
       // start(): start the stopwatch
 
       sw.timer = setInterval(sw.tick, 1000);
+      sw.edist = calculateDistance();
       sw.estart.value = "Stop";
       sw.estart.removeEventListener("click", sw.start);
       sw.estart.addEventListener("click", sw.stop);
@@ -263,7 +266,7 @@ firebase.analytics();
 function addSignInListeners(st) {
   addLogInAndOutListener(state.User);
   listenForAuthChange();
-  listenForRegister();
+  listenForRegister(st);
   listenForSignIn();
 }
 
