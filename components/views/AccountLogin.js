@@ -4,7 +4,7 @@ export default () => `
 
     <div id="existingUser">
       <p class="loginHead">Existing Users</p>
-      <form id = "loginForm" action="" method="POST">
+      <form id = "loginForm">
         <label for="email">Email: </label>
         <input type="email" name="email" id="email" placeholder="enter your email"> <br>
         <label for="password">Password: </label>
@@ -15,7 +15,7 @@ export default () => `
 
     <div id="register">
       <p class="loginHead">Create A New Account</p>
-      <form id = "newUserForm" action="" method="POST">
+      <form id = "newUserForm">
         <label for="firstName">First Name: </label>
         <input type="text" name="firstName" id="firstName" placeholder="First Name">
         <label for="lastName">Last Name: </label>
