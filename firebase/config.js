@@ -1,4 +1,4 @@
-import "../env";
+import end from "env";
 
 export default {
   apiKey: AIzaSyCqruQYeJVKqGCZpcXX9rQyYkKpOgMh5Ug,
