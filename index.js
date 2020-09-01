@@ -33,7 +33,6 @@ function handleRoute(params) {
 }
 
 router.updatePageLinks();
-addSignInListeners(state);
 
 function render(st) {
   document.querySelector("#root").innerHTML = `
@@ -42,7 +41,7 @@ function render(st) {
     ${pageTitle(st)}
     ${Main(st)}
     ${Footer()}
-    `;
+  `;
 
   // only load tracker functionality when on kayak tracker page
   if (st.page === "KayakTracker") {
@@ -50,7 +49,7 @@ function render(st) {
     document
       .getElementById("sw-startButton")
       .addEventListener("click", calculateDistance);
-    calculateAvgPace();
+    // calculateAvgPace();
   }
   if (st.page === "AccountLogin") {
     addSignInListeners(state);
@@ -267,7 +266,7 @@ function addSignInListeners(st) {
   addLogInAndOutListener(state.User);
   listenForAuthChange();
   listenForRegister(st);
-  listenForSignIn();
+  listenForSignIn(st);
 }
 
 // FUNCTIONS & EVENT LISTENERS
@@ -289,7 +288,7 @@ function addLogInAndOutListener(user) {
       });
       console.log(state.User);
     }
-    // if user is logged out, clicking the link will render sign in page
+    // if user is logged out, clicking the link will route to sign in page
   });
 }
 function logOutUserInDb(email) {
@@ -364,7 +363,7 @@ function addUserToStateAndDb(first, last, email, pass) {
 }
 
 function listenForSignIn(st) {
-  document.querySelector("form").addEventListener("submit", event => {
+  document.querySelector("#loginForm").addEventListener("submit", event => {
     event.preventDefault();
     // convert HTML elements to Array
     let inputList = Array.from(event.target.elements);
