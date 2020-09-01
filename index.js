@@ -49,7 +49,6 @@ function render(st) {
     // document
     //   .getElementById("sw-startButton")
     //   .addEventListener("click", calculateDistance);
-    // calculateAvgPace();
   }
   if (st.page === "AccountLogin") {
     addSignInListeners(state);
@@ -253,12 +252,6 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   return dist.toFixed(2);
 }
 calculateDistance();
-
-// calculate Average Pace
-function calculateAvgPace() {
-  document.getElementById("#sw-pace").innerHTML = dist / sw.timer;
-  return calculateAvgPace;
-}
 
 // [FIREBASE USER DATABASE]
 
