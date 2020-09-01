@@ -46,9 +46,9 @@ function render(st) {
   // only load tracker functionality when on kayak tracker page
   if (st.page === "KayakTracker") {
     trackMyKayakFunctionality();
-    document
-      .getElementById("sw-startButton")
-      .addEventListener("click", calculateDistance);
+    // document
+    //   .getElementById("sw-startButton")
+    //   .addEventListener("click", calculateDistance);
     // calculateAvgPace();
   }
   if (st.page === "AccountLogin") {
