@@ -6,12 +6,13 @@ import axios from "axios";
 import "./env";
 import { auth, db } from "./firebase";
 
+// firebase.analytics();
+
 axios
   .get(
     "https://maps.googleapis.com/maps/api/js?key=${process.env.GM_API_KEY}&callback=initMap"
   )
   .then(response => console.log(response.data));
-
 axios
   .get(`https://api.github.com/users/lauren1113/repos`, {
     headers: {
@@ -41,11 +42,18 @@ function render(st) {
     ${pageTitle(st)}
     ${Main(st)}
     ${Footer()}
-  `;
+    `;
 
   // only load tracker functionality when on kayak tracker page
   if (st.page === "KayakTracker") {
     trackMyKayakFunctionality();
+    document
+      .getElementById("sw-startButton")
+      .addEventListener("click", calculateDistance);
+    calculateAvgPace();
+  }
+  if (st.page === "AccountLogin") {
+    addSignInListeners(state);
   }
 }
 
@@ -247,21 +255,13 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 }
 calculateDistance();
 
-document
-  .getElementById("sw-startButton")
-  .addEventListener("click", calculateDistance);
-
 // calculate Average Pace
 function calculateAvgPace() {
   document.getElementById("#sw-pace").innerHTML = dist / sw.timer;
   return calculateAvgPace;
 }
-calculateAvgPace();
 
 // [FIREBASE USER DATABASE]
-
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
 
 function addSignInListeners(st) {
   addLogInAndOutListener(state.User);
@@ -323,31 +323,30 @@ function listenForAuthChange() {
 }
 
 function listenForRegister(st) {
-  if (st.page === "AccountLogin") {
-    document.querySelector("form").addEventListener("submit", event => {
-      event.preventDefault();
-      // convert HTML elements to Array
-      let inputList = Array.from(event.target.elements);
-      // remove submit button from list
-      inputList.pop();
-      const inputs = inputList.map(input => input.value);
-      let firstName = inputs[0];
-      let lastName = inputs[1];
-      let email = inputs[2];
-      let password = inputs[3];
+  document.querySelector("#newUserForm").addEventListener("submit", event => {
+    event.preventDefault();
+    // convert HTML elements to Array
+    let inputList = Array.from(event.target.elements);
+    // remove submit button from list
+    inputList.pop();
+    const inputs = inputList.map(input => input.value);
+    let firstName = inputs[0];
+    let lastName = inputs[1];
+    let email = inputs[2];
+    let password = inputs[3];
 
-      // create user in Firebase
-      auth.createUserWithEmailAndPassword(email, password).then(response => {
-        console.log("User registered!");
-        console.log(response);
-        console.log(response.User);
-        addUserToStateAndDb(firstName, lastName, email, password);
-        render(state.Home);
-        router.navigate("/Home");
-      });
+    // create user in Firebase
+    auth.createUserWithEmailAndPassword(email, password).then(response => {
+      console.log("User registered!");
+      console.log(response);
+      console.log(response.user);
+      addUserToStateAndDb(firstName, lastName, email, password);
+      render(state.Home);
+      router.navigate("/Home");
     });
-  }
+  });
 }
+
 function addUserToStateAndDb(first, last, email, pass) {
   state.User.username = first + last;
   state.User.firstName = first;
@@ -365,23 +364,21 @@ function addUserToStateAndDb(first, last, email, pass) {
 }
 
 function listenForSignIn(st) {
-  if (st.page === "AccountLogin") {
-    document.querySelector("form").addEventListener("submit", event => {
-      event.preventDefault();
-      // convert HTML elements to Array
-      let inputList = Array.from(event.target.elements);
-      // remove submit button from list
-      inputList.pop();
-      const inputs = inputList.map(input => input.value);
-      let email = inputs[0];
-      let password = inputs[1];
-      auth.signInWithEmailAndPassword(email, password).then(() => {
-        console.log("User signed in");
-        getUserFromDb(email).then(() => render(state.Home));
-        router.navigate("/Home");
-      });
+  document.querySelector("form").addEventListener("submit", event => {
+    event.preventDefault();
+    // convert HTML elements to Array
+    let inputList = Array.from(event.target.elements);
+    // remove submit button from list
+    inputList.pop();
+    const inputs = inputList.map(input => input.value);
+    let email = inputs[0];
+    let password = inputs[1];
+    auth.signInWithEmailAndPassword(email, password).then(() => {
+      console.log("User signed in");
+      getUserFromDb(email).then(() => render(state.Home));
+      router.navigate("/Home");
     });
-  }
+  });
 }
 function getUserFromDb(email) {
   return db
