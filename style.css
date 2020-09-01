@@ -162,26 +162,49 @@ p {
   background-image: url("https://images.pexels.com/photos/1646311/pexels-photo-1646311.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
 }
 
-.loginPage {
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-}
-
-.loginHead {
-  text-decoration-line: underline;
-  text-decoration-style: wavy;
-  font-size: 40px;
-  font-weight: bold;
-}
-
 .anchorButtons {
   text-align: center;
   margin: 5px;
   padding: 0px;
 }
 
-/* BEGINNER'S GUIDE TEXT EDITS */
+/* ACCOUNT SIGN-IN TEXT FORMATTING */
+.loginPage {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.signInSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #E6E6FA;
+  border-radius: 4px;
+  width: fit-content;
+  padding: 5px;
+  padding-bottom: 20px;
+  margin: 15px 0px;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.signInForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.loginHead {
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* BEGINNER'S GUIDE FORMATTING  */
 .bgBox {
   display: flex;
   flex-direction: row;
@@ -221,7 +244,7 @@ h6 {
   margin-top: 2px;
 }
 
-/* BEGIN IMAGE EDITS */
+/* [ BEGIN IMAGE FORMATTING ] */
 
 /* IMAGES ON ALL PAGES */
 #headImg {
@@ -254,6 +277,12 @@ h6 {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+
+/* LOG IN PAGE IMAGE */
+#loginPgImg {
+  max-width: 400px;
+  height: auto;
 }
 
 /* BEGINNER'S GUIDE IMAGES */
@@ -377,9 +406,9 @@ h6 {
   margin-right: auto;
   width: 50%;
 }
-/* END IMAGE EDITS */
+/* END IMAGE FORMATTING */
 
-/* TRACKER TEXT */
+/* TRACKER FORMATTING */
 #trackerHeading {
   font-family: "Ink Free";
   text-align: center;
