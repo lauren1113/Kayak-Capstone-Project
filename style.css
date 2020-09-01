@@ -173,35 +173,53 @@ p {
   text-align: center;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+
+.loginPage * {
+  background-color: #E6E6FA;
+  color: #191970;
+  font-weight: bold;
 }
 
 .signInSection {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   border: 2px solid #E6E6FA;
   border-radius: 4px;
   width: fit-content;
-  padding: 5px;
-  padding-bottom: 20px;
+  padding: 10px;
   margin: 15px 0px;
-  margin-bottom: 15px;
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .signInForm {
   display: flex;
   flex-direction: column;
-  justify-content: left;
+  font-weight: bold;
 }
 
 .loginHead {
   text-decoration-line: underline;
   text-decoration-style: wavy;
-  font-size: 28px;
+  font-size: 30px;
   font-weight: bold;
+}
+
+.signInField {
+  border-radius: 5px;
+  font-weight:normal;
+  font-size: 16px;
+}
+
+.loginButton {
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 23px;
+  background-color: #191970;
+  color: #E6E6FA;
 }
 
 /* BEGINNER'S GUIDE FORMATTING  */
@@ -281,8 +299,19 @@ h6 {
 
 /* LOG IN PAGE IMAGE */
 #loginPgImg {
-  max-width: 400px;
+  max-width: 470px;
   height: auto;
+  background-color: #191970;
+}
+
+#signinFormImg {
+  max-height: 175px;
+  width: auto;
+}
+
+#newUserImg {
+  max-height: 70px;
+  width: auto;
 }
 
 /* BEGINNER'S GUIDE IMAGES */

@@ -3,7 +3,7 @@ export default () => `
   <div class="loginPage">
 
     <div class="signInSection" id="existingUser">
-      <p class="loginHead">Existing Users</p>
+      <p class="loginHead">Sign In</p>
       <form class="signInForm" id="loginForm">
         <label for="email">Email: </label>
         <input type="email" name="email" class="signInField" placeholder="enter your email">
@@ -14,12 +14,14 @@ export default () => `
         <br>
         <input type="submit" class="loginButton" id="sign-in-button" value="Sign In">
       </form>
+      <br>
+      <img id="signinFormImg" src="https://github.com/lauren1113/Kayak-Capstone-Project/blob/master/Documents/Design/Kayak%20Photos/roya-ann-miller-ojG9qrU_blw-unsplash.jpg?raw=true"/>
     </div>
 
-    <img id="loginPgImg" src="https://images.unsplash.com/photo-1538475788437-036371c6f833?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80"/>
+    <img id="loginPgImg" src="https://github.com/lauren1113/Kayak-Capstone-Project/blob/master/Documents/Design/Kayak%20Photos/shawn-ang-0qo8EEWx-aY-unsplash.jpg?raw=true"/>
 
     <div class="signInSection" id="register">
-      <p class="loginHead">Create A New Account</p>
+      <p class="loginHead">Create An Account</p>
       <form class="signInForm" id = "newUserForm">
         <label for="firstName">First Name: </label>
         <input type="text" name="firstName" id="firstName" class="signInField" placeholder="First Name">
@@ -36,6 +38,7 @@ export default () => `
         <br>
         <input type="submit" class="loginButton" id="register-button" value="Create Account">
       </form>
+      <br>
     </div>
 
   </div>
