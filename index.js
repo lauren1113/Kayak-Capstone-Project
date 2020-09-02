@@ -3,7 +3,7 @@ import * as state from "./store";
 import Navigo from "navigo";
 import { capitalize } from "lodash";
 import axios from "axios";
-import env from "env";
+import "./env";
 import { auth, db } from "./firebase";
 
 // firebase.analytics();
