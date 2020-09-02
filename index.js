@@ -110,7 +110,7 @@ function getMapData() {
   const tiles = L.tileLayer(tileUrl, {
     attribution,
     id: "mapbox/streets-v11",
-    accessToken: `${process.env.MAPBOX_TOKEN}`,
+    accessToken: ${process.env.MAPBOX_TOKEN},
     tileSize: 512,
     zoomOffset: -1
   });
