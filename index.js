@@ -110,8 +110,7 @@ function getMapData() {
   const tiles = L.tileLayer(tileUrl, {
     attribution,
     id: "mapbox/streets-v11",
-    accessToken:
-      "pk.eyJ1IjoibGF1cmVuMTExMyIsImEiOiJja2U3Zjl4bmgwYWtqMnJwaXJtZDExNTd1In0.RwMkf_IR8Usjvz0kFQuHbw",
+    accessToken: ${process.env.MAPBOX_TOKEN},
     tileSize: 512,
     zoomOffset: -1
   });
@@ -222,6 +221,7 @@ function getLocation() {
   };
   // watch position and update as user moves
   navigator.geolocation.watchPosition(function(position) {
+    let startPos;
     document.getElementById(
       "currentLat"
     ).innerHTML = position.coords.latitude.toFixed(2);
