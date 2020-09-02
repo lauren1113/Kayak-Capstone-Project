@@ -1,13 +1,12 @@
 export default () => `
-  <a id="#topOfBG"></a>
+<div><a id="topOfBG"> </a></div>
   <nav class="anchorButtons">
-    <button><a href="#holdPaddle">Holding the Paddle</a></button>
-    <button><a href="#strokes">Basic Strokes</a></button>
-    <button><a href="#launch">Launching</a></button>
-    <button><a href="#land">Landing</a></button>
-    <button><a href="#what2wear">What to Wear</a></button>
+      <button class="bgAnchorBtn"><a href="#holdPaddle">Holding the Paddle</a></button>
+      <button class="bgAnchorBtn"><a href="#strokes">Basic Strokes</a></button>
+      <button class="bgAnchorBtn"><a href="#launch">Launching</a></button>
+      <button class="bgAnchorBtn"><a href="#land">Landing</a></button>
+      <button class="bgAnchorBtn"><a href="#what2wear">What to Wear</a></button>
   </nav>
-  <br>
 
   <h4 class="sectionTitle"><a id="holdPaddle">How to Hold Your Paddle</a></h4>
   <img id="holdPadImg" src="https://github.com/lauren1113/Kayak-Capstone-Project/blob/master/Documents/Design/Kayak%20Photos/filip-mroz-zK049OFP4uI-unsplash.jpg?raw=true"/>
@@ -25,9 +24,13 @@ export default () => `
   <br>
 
   <nav class="anchorButtons">
-  <button><a href="#topOfBG">Jump to Top</a></button>
+    <button class="bgAnchorBtn"><a href="#topOfBG">Jump to Top</a></button>
+    <button class="bgAnchorBtn"><a href="#holdPaddle">Holding the Paddle</a></button>
+    <button class="bgAnchorBtn"><a href="#strokes">Basic Strokes</a></button>
+    <button class="bgAnchorBtn"><a href="#launch">Launching</a></button>
+    <button class="bgAnchorBtn"><a href="#land">Landing</a></button>
+    <button class="bgAnchorBtn"><a href="#what2wear">What to Wear</a></button>
   </nav>
-  <br>
 
   <h4 class="sectionTitle"><a id="strokes">Basic Paddling Strokes</a></h4>
 
@@ -65,9 +68,13 @@ export default () => `
   <br>
 
   <nav class="anchorButtons">
-  <button><a href="#topOfBG">Jump to Top</a></button>
+    <button class="bgAnchorBtn"><a href="#topOfBG">Jump to Top</a></button>
+    <button class="bgAnchorBtn"><a href="#holdPaddle">Holding the Paddle</a></button>
+    <button class="bgAnchorBtn"><a href="#strokes">Basic Strokes</a></button>
+    <button class="bgAnchorBtn"><a href="#launch">Launching</a></button>
+    <button class="bgAnchorBtn"><a href="#land">Landing</a></button>
+    <button class="bgAnchorBtn"><a href="#what2wear">What to Wear</a></button>
   </nav>
-  <br>
 
   <h4 class="sectionTitle"><a id="launch">How to Launch Your Kayak</a></h4>
 
@@ -150,8 +157,14 @@ export default () => `
   <img id="inWater" src="https://github.com/lauren1113/Kayak-Capstone-Project/blob/master/Documents/Design/Kayak%20Photos/vincent-wright-qEHzlZDtD7w-unsplash.jpg?raw=true"/>
   </div>
   <br>
+
   <nav class="anchorButtons">
-  <button><a href="#topOfBG">Jump to Top</a></button>
+    <button class="bgAnchorBtn"><a href="#topOfBG">Jump to Top</a></button>
+    <button class="bgAnchorBtn"><a href="#holdPaddle">Holding the Paddle</a></button>
+    <button class="bgAnchorBtn"><a href="#strokes">Basic Strokes</a></button>
+    <button class="bgAnchorBtn"><a href="#launch">Launching</a></button>
+    <button class="bgAnchorBtn"><a href="#land">Landing</a></button>
+    <button class="bgAnchorBtn"><a href="#what2wear">What to Wear</a></button>
   </nav>
 
   <h4 class="sectionTitle"><a id="land">How to Land Your Kayak</a></h4>
@@ -208,9 +221,15 @@ export default () => `
   <li>Stand up and guide your kayak into the shore.</li>
   </ul>
   </div>
+  <br>
 
   <nav class="anchorButtons">
-  <button><a href="#topOfBG">Jump to Top</a></button>
+    <button class="bgAnchorBtn"><a href="#topOfBG">Jump to Top</a></button>
+    <button class="bgAnchorBtn"><a href="#holdPaddle">Holding the Paddle</a></button>
+    <button class="bgAnchorBtn"><a href="#strokes">Basic Strokes</a></button>
+    <button class="bgAnchorBtn"><a href="#launch">Launching</a></button>
+    <button class="bgAnchorBtn"><a href="#land">Landing</a></button>
+    <button class="bgAnchorBtn"><a href="#what2wear">What to Wear</a></button>
   </nav>
 
   <h4 class="sectionTitle"><a id="what2wear">What to Wear</a></h4>
@@ -231,11 +250,13 @@ export default () => `
   <br>
 
   <nav class="anchorButtons">
-    <button><a href="#topOfBG">Jump to Top</a></button>
+    <button class="bgAnchorBtn"><a href="#topOfBG">Jump to Top</a></button>
+    <button class="bgAnchorBtn"><a href="#holdPaddle">Holding the Paddle</a></button>
+    <button class="bgAnchorBtn"><a href="#strokes">Basic Strokes</a></button>
+    <button class="bgAnchorBtn"><a href="#launch">Launching</a></button>
+    <button class="bgAnchorBtn"><a href="#land">Landing</a></button>
+    <button class="bgAnchorBtn"><a href="#what2wear">What to Wear</a></button>
   </nav>
-  <br>
 
-  <p>For more information about how to travel safely, be sure to check out: <a href="Safety Tips">Safety Tips!</a></p>
-  <p>To make sure you have everything you need for your next adventure, check our <a href="Packing List">Packing List.</a></p>
-  <p>To find the right kayak to fit your needs, try out our <a href="Kayak Quiz">Kayak Matchmaking Quiz!</a></p>
+  <br>
 `;

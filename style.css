@@ -154,7 +154,6 @@ p {
   margin-left: auto;
   margin-right: auto;
   width: 70%;
-
 }
 
 .createAcctBtn:hover {
@@ -163,9 +162,21 @@ p {
 }
 
 .anchorButtons {
+  position: sticky;
   text-align: center;
   margin: 5px;
-  padding: 0px;
+  padding-left: 15px;
+}
+
+.bgAnchorBtn {
+  background-image: url("https://images.pexels.com/photos/1646311/pexels-photo-1646311.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  border: 2px solid #E6E6FA;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.bgAnchorBtn:hover {
+  background-image: none;
 }
 
 /* ACCOUNT SIGN-IN TEXT FORMATTING */
