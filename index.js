@@ -69,16 +69,16 @@ function getMapData() {
   const successCallback = position => {
     if (position) {
       if (firstTime) {
-        // create marker showing starting location on map
-        const marker = L.marker(
-          [
-            position.coords.latitude.toFixed(2),
-            position.coords.longitude.toFixed(2)
-          ],
-          { opacity: 0.5 }
-        ).addTo(myMap);
         firstTime = false;
       }
+      // create marker showing location on map
+      const marker = L.marker(
+        [
+          position.coords.latitude.toFixed(2),
+          position.coords.longitude.toFixed(2)
+        ],
+        { opacity: 0.5 }
+      ).addTo(myMap);
       myMap.setView(
         [
           position.coords.latitude.toFixed(2),
@@ -117,7 +117,56 @@ function getMapData() {
   tiles.addTo(myMap);
 }
 
-// Stopwatch
+// [ Get lat/long using Geolocation, then use to Calculate Miles Traveled ]
+function getLocation() {
+  // get current/starting position when page is opened
+  window.onload = function() {
+    let startPos;
+    navigator.geolocation.getCurrentPosition(function(position) {
+      startPos = position;
+      document.getElementById(
+        "startLat"
+      ).innerHTML = startPos.coords.latitude.toFixed(2);
+      document.getElementById(
+        "startLon"
+      ).innerHTML = startPos.coords.longitude.toFixed(2);
+    });
+  };
+  // watch position and update as user moves
+  navigator.geolocation.watchPosition(function(position) {
+    let startPos;
+    document.getElementById(
+      "currentLat"
+    ).innerHTML = position.coords.latitude.toFixed(2);
+    document.getElementById(
+      "currentLon"
+    ).innerHTML = position.coords.longitude.toFixed(2);
+    document.getElementById("sw-distance").innerHTML = calculateDistance(
+      startPos.coords.latitude,
+      startPos.coords.longitude,
+      position.coords.latitude,
+      position.coords.longitude
+    );
+  });
+}
+
+// Convert difference between starting lat & long to miles
+function calculateDistance(lat1, lon1, lat2, lon2) {
+  const radlat1 = (Math.PI * lat1) / 180;
+  const radlat2 = (Math.PI * lat2) / 180;
+  const theta = lon1 - lon2;
+  const radtheta = (Math.PI * theta) / 180;
+  let dist =
+    Math.sin(radlat1) * Math.sin(radlat2) +
+    Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+  dist = Math.acos(dist);
+  dist = (dist * 180) / Math.PI;
+  dist = dist * 60 * 1.1515;
+  return dist.toFixed(2);
+}
+calculateDistance();
+
+// [ Stopwatch ] //
 function stopwatch() {
   let sw = {
     etime: null,
@@ -203,55 +252,6 @@ function stopwatch() {
 
   window.addEventListener("load", sw.init);
 }
-
-// [ Get lat/long using Geolocation, then use to Calculate Miles Traveled ]
-function getLocation() {
-  // get current/starting position when page is opened
-  window.onload = function() {
-    let startPos;
-    navigator.geolocation.getCurrentPosition(function(position) {
-      startPos = position;
-      document.getElementById(
-        "startLat"
-      ).innerHTML = startPos.coords.latitude.toFixed(2);
-      document.getElementById(
-        "startLon"
-      ).innerHTML = startPos.coords.longitude.toFixed(2);
-    });
-  };
-  // watch position and update as user moves
-  navigator.geolocation.watchPosition(function(position) {
-    let startPos;
-    document.getElementById(
-      "currentLat"
-    ).innerHTML = position.coords.latitude.toFixed(2);
-    document.getElementById(
-      "currentLon"
-    ).innerHTML = position.coords.longitude.toFixed(2);
-    document.getElementById("sw-distance").innerHTML = calculateDistance(
-      startPos.coords.latitude,
-      startPos.coords.longitude,
-      position.coords.latitude,
-      position.coords.longitude
-    );
-  });
-}
-
-// Convert difference between starting lat & long to miles
-function calculateDistance(lat1, lon1, lat2, lon2) {
-  const radlat1 = (Math.PI * lat1) / 180;
-  const radlat2 = (Math.PI * lat2) / 180;
-  const theta = lon1 - lon2;
-  const radtheta = (Math.PI * theta) / 180;
-  let dist =
-    Math.sin(radlat1) * Math.sin(radlat2) +
-    Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-  dist = Math.acos(dist);
-  dist = (dist * 180) / Math.PI;
-  dist = dist * 60 * 1.1515;
-  return dist.toFixed(2);
-}
-calculateDistance();
 
 // [FIREBASE USER DATABASE]
 
