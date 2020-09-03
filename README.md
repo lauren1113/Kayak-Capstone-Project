@@ -5,7 +5,7 @@
 
 _**Kayak Fanatic**_ is an Adventure Guide for kayakers, with tips, tricks, and tools for fun, safe, and successful kayak trips!
 
-This is my first coding project, which I began during the **[Savvy Coders]**(https://savvycoders.com/) Full Stack Web Development Boot Camp, beginning in June 2020. I used JavaScript, CSS, HTML, Firebase, and map APIs to develop this Single Page Application. 
+This is my first coding project, which I began during the **[Savvy Coders](https://savvycoders.com/)** Full Stack Web Development Boot Camp, beginning in June 2020. I used JavaScript, CSS, HTML, Firebase, and map APIs to develop this Single Page Application. 
 
 When I’m not coding, I am a very outdoorsy and adventurous person. I recently started kayaking, and I have quickly become quite the enthusiast! Before I got started, I spent a lot of time searching several different websites, trying to figure out everything I needed to know to get started: what type of kayak would be right for me, where should I go, what do I wear, how do I paddle, everything. So during my summer with Savvy Coders, I decided to combine my two new passions – coding and kayaking – and I began developing an application that has all of the resources kayakers may need, all in one place.
 
@@ -15,7 +15,6 @@ So far, I have built a **Beginner's Guide to Kayaking**, with details about almo
 
 To see my current workings and items I plan to add to my application, visit my [Kanban Board](https://trello.com/b/VQj9bm50/kayak-capstone-project) on Trello! 
 
-https://trello.com/b/VQj9bm50/kayak-capstone-project
-
 
 ![Kayak Icon](https://icon-library.net/images/kayaking-icon/kayaking-icon-5.jpg)
+
