@@ -15,7 +15,6 @@ So far, I have built a **Beginner's Guide to Kayaking**, with details about almo
 
 To see my current workings and items I plan to add to my application, visit my [Kanban Board](https://trello.com/b/VQj9bm50/kayak-capstone-project) on Trello! 
 
-https://trello.com/b/VQj9bm50/kayak-capstone-project
-
 
 ![Kayak Icon](https://icon-library.net/images/kayaking-icon/kayaking-icon-5.jpg)
+
