@@ -152,35 +152,35 @@ function getLocation() {
     document.getElementById(
       "currentLon"
     ).innerHTML = position.coords.longitude.toFixed(2);
-    // Convert difference between starting lat & long to miles
-    function calculateDistance() {
-      let lat1 = startPos.coords.latitude;
-      let lon1 = startPos.coords.longitude;
-      let lat2 = position.coords.latitude;
-      let lon2 = position.coords.longitude;
-      const radlat1 = (Math.PI * lat1) / 180;
-      const radlat2 = (Math.PI * lat2) / 180;
-      const theta = lon1 - lon2;
-      const radtheta = (Math.PI * theta) / 180;
-      let dist =
-        Math.sin(radlat1) * Math.sin(radlat2) +
-        Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-      dist = Math.acos(dist);
-      dist = (dist * 180) / Math.PI;
-      dist = dist * 60 * 1.1515;
-      return dist;
-    }
-    calculateDistance();
-    document.getElementByClass(
-      "sw-distance"
-    ).innerHTML = calculateDistance.toFixed(2);
+    document.getElementById("distance").innerHTML = calculateDistance(
+      startPos.coords.latitude,
+      startPos.coords.longitude,
+      position.coords.latitude,
+      position.coords.longitude
+    );
   });
 }
+// Convert difference between starting lat & long to miles
+function calculateDistance(lat1, lon1, lat2, lon2) {
+  const radlat1 = (Math.PI * lat1) / 180;
+  const radlat2 = (Math.PI * lat2) / 180;
+  const theta = lon1 - lon2;
+  const radtheta = (Math.PI * theta) / 180;
+  let dist =
+    Math.sin(radlat1) * Math.sin(radlat2) +
+    Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+  dist = Math.acos(dist);
+  dist = (dist * 180) / Math.PI;
+  dist = dist * 60 * 1.1515;
+  return dist.toFixed(2);
+}
+calculateDistance();
 
 // [ Stopwatch ] //
 function stopwatch() {
   let sw = {
     etime: null,
+    edist: null,
     ereset: null,
     estart: null,
     timer: null,
@@ -189,6 +189,7 @@ function stopwatch() {
     init: function() {
       // Get HTML Elements
       sw.etime = document.getElementById("sw-time");
+      sw.edist = document.getElementById("sw-distance");
       sw.ereset = document.getElementById("sw-resetButton");
       sw.estart = document.getElementById("sw-startButton");
 
@@ -229,6 +230,7 @@ function stopwatch() {
       // start(): start the stopwatch
 
       sw.timer = setInterval(sw.tick, 1000);
+      sw.edist = calculateDistance();
       sw.estart.value = "Stop";
       sw.estart.removeEventListener("click", sw.start);
       sw.estart.addEventListener("click", sw.stop);
