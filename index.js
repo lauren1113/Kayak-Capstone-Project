@@ -59,8 +59,6 @@ function trackMyKayakFunctionality() {
   getMapData();
   stopwatch();
   getLocation();
-  calculateDistance();
-  // calculateAvgPace();
 }
 
 function getMapData() {
@@ -69,6 +67,24 @@ function getMapData() {
   const successCallback = position => {
     if (position) {
       if (firstTime) {
+<<<<<<< HEAD
+=======
+        // create marker showing starting location on map
+        const kayakIcon = L.icon({
+          iconUrl:
+            "https://icon-library.net/images/kayaking-icon/kayaking-icon-5.jpg",
+          iconSize: [70, 50],
+          iconAnchor: [25, 16]
+        });
+        let marker = L.marker(
+          [
+            position.coords.latitude.toFixed(2),
+            position.coords.longitude.toFixed(2)
+          ],
+          { icon: kayakIcon },
+          { opacity: 0.5 }
+        ).addTo(myMap);
+>>>>>>> testing
         firstTime = false;
       }
       // create marker showing location on map
@@ -102,6 +118,7 @@ function getMapData() {
     enableHighAccuracy: true,
     timeout: 5000
   });
+
   // create map with leaflet API
   const attribution =
     'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
@@ -141,6 +158,7 @@ function getLocation() {
     document.getElementById(
       "currentLon"
     ).innerHTML = position.coords.longitude.toFixed(2);
+<<<<<<< HEAD
     document.getElementById("sw-distance").innerHTML = calculateDistance(
       startPos.coords.latitude,
       startPos.coords.longitude,
@@ -165,6 +183,33 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   return dist.toFixed(2);
 }
 calculateDistance();
+=======
+
+    // Convert difference between starting lat & long to miles
+    function calculateDistance() {
+      let lat1 = startPos.coords.latitude;
+      let lon1 = startPos.coords.longitude;
+      let lat2 = position.coords.latitude;
+      let lon2 = position.coords.longitude;
+      const radlat1 = (Math.PI * lat1) / 180;
+      const radlat2 = (Math.PI * lat2) / 180;
+      const theta = lon1 - lon2;
+      const radtheta = (Math.PI * theta) / 180;
+      let dist =
+        Math.sin(radlat1) * Math.sin(radlat2) +
+        Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+      dist = Math.acos(dist);
+      dist = (dist * 180) / Math.PI;
+      dist = dist * 60 * 1.1515;
+      return dist;
+    }
+    calculateDistance();
+    document.getElementById(
+      "sw-distance"
+    ).innerHTML = calculateDistance.toFixed(2);
+  });
+}
+>>>>>>> testing
 
 // [ Stopwatch ] //
 function stopwatch() {
