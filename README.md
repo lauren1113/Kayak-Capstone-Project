@@ -3,7 +3,7 @@
 
 ![Kayak-Fanatic-Logo](https://github.com/lauren1113/Kayak-Capstone-Project/blob/master/Documents/Design/Kayak%20Photos/Kayak-Fanatic-Logo.png?raw=true)
 
-Kayak Fanatic is an Adventure Guide for kayakers, with tips, tricks, and tools for fun, safe, and successful kayak trips!
+_Kayak Fanatic_ is an Adventure Guide for kayakers, with tips, tricks, and tools for fun, safe, and successful kayak trips!
 
 This is my first coding project, which I began during the **Savvy Coders** Full Stack Web Development Boot Camp, beginning in June 2020. I used JavaScript, CSS, HTML, Firebase, and map APIs to develop this Single Page Application. 
 
