@@ -6,8 +6,6 @@ import axios from "axios";
 import "./env";
 import { auth, db } from "./firebase";
 
-// firebase.analytics();
-
 axios
   .get(
     "https://maps.googleapis.com/maps/api/js?key=${process.env.GM_API_KEY}&callback=initMap"
@@ -281,7 +279,6 @@ function addLogInAndOutListener(user) {
       event.preventDefault();
       // log out functionality
       auth.signOut().then(() => {
-        console.log("User logged out");
         logOutUserInDb(user.email);
         resetUserInState();
         // update user in database
@@ -289,7 +286,6 @@ function addLogInAndOutListener(user) {
         render(state.Home);
         router.navigate("/Home");
       });
-      console.log(state.User);
     }
     // if user is logged out, clicking the link will route to sign in page
   });
@@ -308,7 +304,6 @@ function logOutUserInDb(email) {
           }
         })
       );
-    console.log("User signed out in db");
   }
 }
 function resetUserInState() {
@@ -339,9 +334,6 @@ function listenForRegister(st) {
 
     // create user in Firebase
     auth.createUserWithEmailAndPassword(email, password).then(response => {
-      console.log("User registered!");
-      console.log(response);
-      console.log(response.user);
       addUserToStateAndDb(firstName, lastName, email, password);
       render(state.Home);
       router.navigate("/Home");
@@ -376,7 +368,6 @@ function listenForSignIn(st) {
     let email = inputs[0];
     let password = inputs[1];
     auth.signInWithEmailAndPassword(email, password).then(() => {
-      console.log("User signed in");
       getUserFromDb(email).then(() => render(state.Home));
       router.navigate("/Home");
     });
@@ -393,14 +384,12 @@ function getUserFromDb(email) {
           db.collection("Users")
             .doc(id)
             .update({ signedIn: true });
-          console.log("user signed in in db");
           let user = doc.data();
           state.User.username = user.firstName + user.lastName;
           state.User.firstName = user.firstName;
           state.User.lastName = user.lastName;
           state.User.email = email;
           state.User.loggedIn = true;
-          console.log(state.User);
         }
       })
     );
