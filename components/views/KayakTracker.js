@@ -6,7 +6,7 @@ export default () => `
       <!-- [DISPLAY DISTANCE] -->
         <div class="trackerTopic">
           <h5 class="tracking">Distance Traveled</h5>
-          <div id="sw-distance">00.00</div>miles
+          <div class="sw-distance">00.00</div>miles
         </div>
       <!-- [DISPLAY TIMER] -->
         <div class="trackerTopic">
@@ -33,7 +33,7 @@ export default () => `
           <p>
             Current Location (lat, lon): <span id="currentLat">???</span>°, <span id="currentLon">???</span>°
           </p>
-            <p>Distance Traveled: <span id="sw-distance">0.00</span>mi
+            <p>Distance Traveled: <span class="sw-distance">0.00</span>mi
           </p>
         </div>
       </div>

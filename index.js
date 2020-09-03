@@ -46,9 +46,6 @@ function render(st) {
   // only load tracker functionality when on kayak tracker page
   if (st.page === "KayakTracker") {
     trackMyKayakFunctionality();
-    // document
-    //   .getElementById("sw-startButton")
-    //   .addEventListener("click", calculateDistance);
   }
   if (st.page === "AccountLogin") {
     addSignInListeners(state);
@@ -67,32 +64,29 @@ function getMapData() {
   const successCallback = position => {
     if (position) {
       if (firstTime) {
-<<<<<<< HEAD
-=======
         // create marker showing starting location on map
-        const kayakIcon = L.icon({
-          iconUrl:
-            "https://icon-library.net/images/kayaking-icon/kayaking-icon-5.jpg",
-          iconSize: [70, 50],
-          iconAnchor: [25, 16]
-        });
         let marker = L.marker(
           [
             position.coords.latitude.toFixed(2),
             position.coords.longitude.toFixed(2)
           ],
-          { icon: kayakIcon },
           { opacity: 0.5 }
         ).addTo(myMap);
->>>>>>> testing
         firstTime = false;
       }
-      // create marker showing location on map
+      // create kayak icon marker showing current location on map
+      const kayakIcon = L.icon({
+        iconUrl:
+          "https://icon-library.net/images/kayaking-icon/kayaking-icon-5.jpg",
+        iconSize: [70, 50],
+        iconAnchor: [25, 16]
+      });
       const marker = L.marker(
         [
           position.coords.latitude.toFixed(2),
           position.coords.longitude.toFixed(2)
         ],
+        { icon: kayakIcon },
         { opacity: 0.5 }
       ).addTo(myMap);
       myMap.setView(
@@ -158,33 +152,6 @@ function getLocation() {
     document.getElementById(
       "currentLon"
     ).innerHTML = position.coords.longitude.toFixed(2);
-<<<<<<< HEAD
-    document.getElementById("sw-distance").innerHTML = calculateDistance(
-      startPos.coords.latitude,
-      startPos.coords.longitude,
-      position.coords.latitude,
-      position.coords.longitude
-    );
-  });
-}
-
-// Convert difference between starting lat & long to miles
-function calculateDistance(lat1, lon1, lat2, lon2) {
-  const radlat1 = (Math.PI * lat1) / 180;
-  const radlat2 = (Math.PI * lat2) / 180;
-  const theta = lon1 - lon2;
-  const radtheta = (Math.PI * theta) / 180;
-  let dist =
-    Math.sin(radlat1) * Math.sin(radlat2) +
-    Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-  dist = Math.acos(dist);
-  dist = (dist * 180) / Math.PI;
-  dist = dist * 60 * 1.1515;
-  return dist.toFixed(2);
-}
-calculateDistance();
-=======
-
     // Convert difference between starting lat & long to miles
     function calculateDistance() {
       let lat1 = startPos.coords.latitude;
@@ -204,18 +171,16 @@ calculateDistance();
       return dist;
     }
     calculateDistance();
-    document.getElementById(
+    document.getElementByClass(
       "sw-distance"
     ).innerHTML = calculateDistance.toFixed(2);
   });
 }
->>>>>>> testing
 
 // [ Stopwatch ] //
 function stopwatch() {
   let sw = {
     etime: null,
-    edist: null,
     ereset: null,
     estart: null,
     timer: null,
@@ -224,7 +189,6 @@ function stopwatch() {
     init: function() {
       // Get HTML Elements
       sw.etime = document.getElementById("sw-time");
-      sw.edist = document.getElementById("sw-distance");
       sw.ereset = document.getElementById("sw-resetButton");
       sw.estart = document.getElementById("sw-startButton");
 
@@ -265,7 +229,6 @@ function stopwatch() {
       // start(): start the stopwatch
 
       sw.timer = setInterval(sw.tick, 1000);
-      sw.edist = calculateDistance();
       sw.estart.value = "Stop";
       sw.estart.removeEventListener("click", sw.start);
       sw.estart.addEventListener("click", sw.stop);
