@@ -1,7 +1,7 @@
 # Kayak Fanatic
 ## **Lauren Lazzaro:** Savvy Coders Capstone Project 
 
-![Kayak Icon](https://icon-library.net/images/kayaking-icon/kayaking-icon-5.jpg)
+![Kayak-Fanatic-Logo](https://github.com/lauren1113/Kayak-Capstone-Project/blob/master/Documents/Design/Kayak%20Photos/Kayak-Fanatic-Logo.png?raw=true)
 
 Kayak Fanatic is an Adventure Guide for kayakers, with tips, tricks, and tools for fun, safe, and successful kayak trips!
 
@@ -17,3 +17,5 @@ To see my current workings and items I plan to add to my application, visit my [
 
 https://trello.com/b/VQj9bm50/kayak-capstone-project
 
+
+![Kayak Icon](https://icon-library.net/images/kayaking-icon/kayaking-icon-5.jpg)
