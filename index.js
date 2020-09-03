@@ -59,8 +59,6 @@ function trackMyKayakFunctionality() {
   getMapData();
   stopwatch();
   getLocation();
-  calculateDistance();
-  // calculateAvgPace();
 }
 
 function getMapData() {
@@ -70,11 +68,18 @@ function getMapData() {
     if (position) {
       if (firstTime) {
         // create marker showing starting location on map
-        const marker = L.marker(
+        const kayakIcon = L.icon({
+          iconUrl:
+            "https://icon-library.net/images/kayaking-icon/kayaking-icon-5.jpg",
+          iconSize: [70, 50],
+          iconAnchor: [25, 16]
+        });
+        let marker = L.marker(
           [
             position.coords.latitude.toFixed(2),
             position.coords.longitude.toFixed(2)
           ],
+          { icon: kayakIcon },
           { opacity: 0.5 }
         ).addTo(myMap);
         firstTime = false;
@@ -102,6 +107,7 @@ function getMapData() {
     enableHighAccuracy: true,
     timeout: 5000
   });
+
   // create map with leaflet API
   const attribution =
     'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
@@ -117,7 +123,57 @@ function getMapData() {
   tiles.addTo(myMap);
 }
 
-// Stopwatch
+// [ Get lat/long using Geolocation, then use to Calculate Miles Traveled ]
+function getLocation() {
+  // get current/starting position when page is opened
+  window.onload = function() {
+    let startPos;
+    navigator.geolocation.getCurrentPosition(function(position) {
+      startPos = position;
+      document.getElementById(
+        "startLat"
+      ).innerHTML = startPos.coords.latitude.toFixed(2);
+      document.getElementById(
+        "startLon"
+      ).innerHTML = startPos.coords.longitude.toFixed(2);
+    });
+  };
+  // watch position and update as user moves
+  navigator.geolocation.watchPosition(function(position) {
+    let startPos;
+    document.getElementById(
+      "currentLat"
+    ).innerHTML = position.coords.latitude.toFixed(2);
+    document.getElementById(
+      "currentLon"
+    ).innerHTML = position.coords.longitude.toFixed(2);
+
+    // Convert difference between starting lat & long to miles
+    function calculateDistance() {
+      let lat1 = startPos.coords.latitude;
+      let lon1 = startPos.coords.longitude;
+      let lat2 = position.coords.latitude;
+      let lon2 = position.coords.longitude;
+      const radlat1 = (Math.PI * lat1) / 180;
+      const radlat2 = (Math.PI * lat2) / 180;
+      const theta = lon1 - lon2;
+      const radtheta = (Math.PI * theta) / 180;
+      let dist =
+        Math.sin(radlat1) * Math.sin(radlat2) +
+        Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+      dist = Math.acos(dist);
+      dist = (dist * 180) / Math.PI;
+      dist = dist * 60 * 1.1515;
+      return dist;
+    }
+    calculateDistance();
+    document.getElementById(
+      "sw-distance"
+    ).innerHTML = calculateDistance.toFixed(2);
+  });
+}
+
+// [ Stopwatch ] //
 function stopwatch() {
   let sw = {
     etime: null,
@@ -203,55 +259,6 @@ function stopwatch() {
 
   window.addEventListener("load", sw.init);
 }
-
-// [ Get lat/long using Geolocation, then use to Calculate Miles Traveled ]
-function getLocation() {
-  // get current/starting position when page is opened
-  window.onload = function() {
-    let startPos;
-    navigator.geolocation.getCurrentPosition(function(position) {
-      startPos = position;
-      document.getElementById(
-        "startLat"
-      ).innerHTML = startPos.coords.latitude.toFixed(2);
-      document.getElementById(
-        "startLon"
-      ).innerHTML = startPos.coords.longitude.toFixed(2);
-    });
-  };
-  // watch position and update as user moves
-  navigator.geolocation.watchPosition(function(position) {
-    let startPos;
-    document.getElementById(
-      "currentLat"
-    ).innerHTML = position.coords.latitude.toFixed(2);
-    document.getElementById(
-      "currentLon"
-    ).innerHTML = position.coords.longitude.toFixed(2);
-    document.getElementById("sw-distance").innerHTML = calculateDistance(
-      startPos.coords.latitude,
-      startPos.coords.longitude,
-      position.coords.latitude,
-      position.coords.longitude
-    );
-  });
-}
-
-// Convert difference between starting lat & long to miles
-function calculateDistance(lat1, lon1, lat2, lon2) {
-  const radlat1 = (Math.PI * lat1) / 180;
-  const radlat2 = (Math.PI * lat2) / 180;
-  const theta = lon1 - lon2;
-  const radtheta = (Math.PI * theta) / 180;
-  let dist =
-    Math.sin(radlat1) * Math.sin(radlat2) +
-    Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-  dist = Math.acos(dist);
-  dist = (dist * 180) / Math.PI;
-  dist = dist * 60 * 1.1515;
-  return dist.toFixed(2);
-}
-calculateDistance();
 
 // [FIREBASE USER DATABASE]
 
